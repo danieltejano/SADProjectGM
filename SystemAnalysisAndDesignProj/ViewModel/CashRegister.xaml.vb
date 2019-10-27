@@ -100,7 +100,6 @@ Public Class CashRegister
                 .AddWithValue("@TenderAmount", tenderAmount)
                 .AddWithValue("@Change", change)
                 .AddWithValue("@toDeliver?", toDeliver)
-                .AddWithValue("@Qty", runningCount)
             End With
             command.ExecuteNonQuery()
             command.Dispose()
@@ -159,7 +158,7 @@ Public Class CashRegister
             End Using
         Next
 
-        RecordLog(accountID:=AccountId, loa:=UserType, actionTaken:="Issued a Transaction")
+        RecordLog(accountID:=AccountId, loa:=UserType, actionTaken:="Generated Transaction")
         runningCount = 0
         runningTotal = 0
         GRDCompleteTransaction.Visibility = Visibility.Visible

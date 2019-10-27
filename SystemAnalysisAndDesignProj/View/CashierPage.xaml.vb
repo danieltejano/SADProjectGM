@@ -197,9 +197,6 @@ Class CashierPage
     End Sub
 
     Private Sub ShoppingCartTable_SelectedCellsChanged(sender As Object, e As SelectedCellsChangedEventArgs) Handles ShoppingCartTable.SelectedCellsChanged
-        If ShoppingCartTable.Items.Count = 0 Then
-            ShoppingCartTable.Items.Clear()
-        End If
         EditItem.IsEnabled = True
     End Sub
 
@@ -233,6 +230,7 @@ Class CashierPage
     End Function
 
     Private Sub DeleteItem_Click(sender As Object, e As RoutedEventArgs) Handles DeleteItem.Click
+
         ShoppingCartTable.Items.Remove(ShoppingCartTable.SelectedItem)
         qtySelector.UpdateStats()
     End Sub

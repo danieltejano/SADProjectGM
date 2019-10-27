@@ -125,7 +125,7 @@ Class AccountsPage
                 A.Close()
                 Restrictions()
                 FLDAct.Visibility = Visibility.Visible
-                RecordLog(accountID:=AccountId, loa:=UserType, actionTaken:="AccountAdded")
+                RecordLog(accountID:=AccountId, loa:=UserType, actionTaken:="Account Added")
             End Try
         End If
 
@@ -280,8 +280,6 @@ Class AccountsPage
             binding.StringFormat = "MMMMM-dd-yyyy"
         End If
     End Sub
-
-
 #Region "keypress"
     Private Sub FLDUsr_PreviewKeyDown(sender As Object, e As KeyEventArgs) Handles FLDUsr.PreviewKeyDown
         Dim x As String
@@ -401,16 +399,6 @@ Class AccountsPage
         Else
             e.Handled = True
         End If
-    End Sub
-
-    Private Sub DPBd_CalendarOpened(sender As Object, e As RoutedEventArgs) Handles DPBd.CalendarOpened
-        DPBd.DisplayDate = DateTime.Today.AddYears(-18)
-        Dim startdate As New DateTime
-        startdate = DateTime.Today.AddDays(+1).AddYears(-18)
-        Dim enddate As New DateTime
-        enddate = DateTime.Today.AddYears(-1500)
-        DPBd.BlackoutDates.Add(New CalendarDateRange(start:=DateTime.Today.AddDays(+1).AddYears(-18), [end]:=startdate.AddYears(2000)))
-        DPBd.BlackoutDates.Add(New CalendarDateRange(start:=enddate, [end]:=enddate.AddYears(1400)))
     End Sub
 
 

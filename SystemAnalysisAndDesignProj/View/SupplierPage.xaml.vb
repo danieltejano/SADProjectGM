@@ -302,7 +302,7 @@ Public Class SupplierPage
             e.Handled = False
         ElseIf x = Key.Tab Then
             FLDCTn.Focus()
-        ElseIf x = Key.Enter Or x = Key.Down Then
+        ElseIf x = Key.Enter Then
             buttonSave.Focus()
         ElseIf x = Key.Up Then
             FLDOwn.Focus()

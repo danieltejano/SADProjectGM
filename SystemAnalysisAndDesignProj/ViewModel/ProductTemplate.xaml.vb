@@ -1,6 +1,7 @@
 ﻿Imports System.Data
 Imports System.Windows.Media.Animation
 Imports System.Windows.Media
+
 Public Class ProductTemplate
     Public Product As New Product
     Public productDataTable As DataTable

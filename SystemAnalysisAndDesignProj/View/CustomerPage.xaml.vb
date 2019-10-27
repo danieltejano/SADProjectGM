@@ -121,6 +121,8 @@ Public Class CustomerPage
             Try
                 If FLDFn.Text = "" Or FLDLn.Text = "" Or DPBd.Text = "" Or FLDAdr.Text = "" Or FLDCTn.Text = "" Then
                     MessageBox.Show("All Fields under User Account is needed to be filled out")
+                ElseIf FLDAdr.Text.Length <= 10 Then
+                    MsgBox("Address too short")
                 ElseIf FLDFn.Text = B.Fields("FirstName").Value And FLDLn.Text = B.Fields("LastName").Value Then
                     MessageBox.Show("Customer already exists")
                 End If
@@ -154,6 +156,8 @@ Public Class CustomerPage
                 MessageBox.Show("All Fields under User Account is needed to be filled out")
             ElseIf B.Fields("Firstname").Value = FLDFn.Text And B.Fields("Lastname").Value = FLDLn.Text And B.Fields("Birthdate").Value = DPBd.Text And B.Fields("Address").Value = FLDAdr.Text And B.Fields("Contact Number").Value = FLDCTn.Text Then
                 MessageBox.Show("No changes made.", "SYSTEM")
+            ElseIf FLDAdr.Text.Length <= 10 Then
+                MsgBox("Address too short")
             ElseIf FLDFn.Text <> B.Fields("FirstName").Value Or FLDLn.Text <> B.Fields("LastName").Value Then
                 B.Close()
                 B.Open("Select * from Customer where FirstName='" & FLDFn.Text & "'" & "and LastName='" & FLDLn.Text & "'", A)
@@ -292,7 +296,7 @@ Public Class CustomerPage
             e.Handled = False
         ElseIf x = Key.Tab Then
             FLDCTn.Focus()
-        ElseIf x = Key.Enter Or x = Key.Down Then
+        ElseIf x = Key.Enter Then
             buttonSave.Focus()
         ElseIf x = Key.Up Then
             FLDAdr.Focus()

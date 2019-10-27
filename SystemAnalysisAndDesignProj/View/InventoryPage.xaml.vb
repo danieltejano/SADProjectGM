@@ -142,6 +142,7 @@ Class InventoryPage
 
             FLDadd.Text = 0
             btnplus.IsEnabled = True
+            btnplus_10.IsEnabled = True
             BTNAddStocks.Content = "SAVE"
             buttonCancel.Visibility = Visibility.Visible
             buttonCancel.IsEnabled = True
@@ -447,7 +448,7 @@ Class InventoryPage
             e.Handled = False
         ElseIf x = Key.Tab Then
             FLDSi.Focus()
-        ElseIf x = Key.Enter Or x = Key.Down Then
+        ElseIf x = Key.Enter Then
             buttonSave.Focus()
         ElseIf x = Key.Up Then
             FLDCat.Focus()

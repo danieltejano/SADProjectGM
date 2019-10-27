@@ -25,9 +25,14 @@ Public Class Quantity_Selector
 
 
 
+
     Private Sub BTNConfirm_Click(sender As Object, e As RoutedEventArgs) Handles BTNConfirm.Click
         If FLDqty.Text = Nothing Then
-            qtySetter = 0
+            FLDqty.Text = 0
+        ElseIf Int(FLDqty.Text) = 0 Then
+            FLDqty.Text = 0
+        ElseIf Int(FLDqty.Text) > productToAdd.UnitsAvailable Then
+            MessageBox.Show("Insufficient product")
         ElseIf isEditing Then
 
             Integer.TryParse(FLDqty.Text, qtySetter)
@@ -71,6 +76,13 @@ Public Class Quantity_Selector
             Else
                 Integer.TryParse(FLDqty.Text, qtySetter)
                 productToAdd.Quantity = qtySetter
+                Dim doublePrice As Double = 0.00
+                Double.TryParse(productToAdd.ProductPrice, doublePrice)
+                doublePrice = qtySetter * doublePrice
+                runningTotal += doublePrice
+                totalManager.Text = "₱" + Format(runningTotal, "##,##0.00")
+                runningCount = runningCount + (1 * qtySetter)
+                totalCount.Text = runningCount
                 productDataTableGrid.Items.Add(productToAdd)
                 FLDqty.Text = ""
                 qtySetter = 0
@@ -79,6 +91,7 @@ Public Class Quantity_Selector
                 UpdateStats()
             End If
         End If
+        FLDqty.Text = ""
     End Sub
 
     Private Sub addQuantityToItem(ByRef targetProduct As Product)
@@ -101,6 +114,7 @@ Public Class Quantity_Selector
             previousQTY -= qtySetter
 
         ElseIf qtySetter > previousQTY Then
+
             qtySetter -= previousQTY
 
             If productDataTableGrid.Items.Contains(productToAdd) Then
@@ -113,6 +127,8 @@ Public Class Quantity_Selector
                 MessageBox.Show("No Changes Made")
         End If
     End Sub
+
+
 
 
     Public Sub UpdateStats()
@@ -141,13 +157,16 @@ Public Class Quantity_Selector
             e.Handled = False
         ElseIf e.Key = Key.Escape Then
             Me.Visibility = Visibility.Hidden
+            FLDqty.Text = ""
             qtySetter = 0
             isSelectingQuantity = False
         ElseIf (e.Key = Key.Return) Then
             If FLDqty.Text = Nothing Then
-                qtySetter = 0
-            ElseIf productToAdd.UnitsAvailable < (Convert.ToInt32(FLDqty.Text)) Then
-                MessageBox.Show(" You only have: " & productToAdd.UnitsAvailable & " of " & productToAdd.ProductName & " You cannot purchase beyond the available stocks")
+                FLDqty.Text = 0
+            ElseIf Int(FLDqty.Text) = 0 Then
+                FLDqty.Text = 0
+            ElseIf Int(FLDqty.Text) > productToAdd.UnitsAvailable Then
+                MessageBox.Show("You only have: " & productToAdd.UnitsAvailable & " " & productToAdd.ProductName & " \n You cannot add more than the available stock")
             ElseIf isEditing Then
 
                 Integer.TryParse(FLDqty.Text, qtySetter)
@@ -188,6 +207,13 @@ Public Class Quantity_Selector
                 Else
                     Integer.TryParse(FLDqty.Text, qtySetter)
                     productToAdd.Quantity = qtySetter
+                    Dim doublePrice As Double = 0.00
+                    Double.TryParse(productToAdd.ProductPrice, doublePrice)
+                    doublePrice = qtySetter * doublePrice
+                    runningTotal += doublePrice
+                    totalManager.Text = "₱" + Format(runningTotal, "##,##0.00")
+                    runningCount = runningCount + (1 * qtySetter)
+                    totalCount.Text = runningCount
                     productDataTableGrid.Items.Add(productToAdd)
                     FLDqty.Text = ""
                     qtySetter = 0
@@ -196,9 +222,14 @@ Public Class Quantity_Selector
                     UpdateStats()
                 End If
             End If
+            FLDqty.Text = ""
         Else
             e.Handled = True
         End If
+    End Sub
 
+    Private Sub QTYClose_Click(sender As Object, e As RoutedEventArgs) Handles QTYClose.Click
+        Me.Visibility = Visibility.Hidden
+        FLDqty.Text = ""
     End Sub
 End Class

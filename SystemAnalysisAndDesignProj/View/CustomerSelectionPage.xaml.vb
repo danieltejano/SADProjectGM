@@ -10,7 +10,6 @@ Class CustomerSelectionPage
     Private dt As New DataTable
     Public RBXText As String = ""
     Public isLoadedOnce As Boolean = False
-
     Private Sub BTNECustomer_Click(sender As Object, e As RoutedEventArgs) Handles BTNECustomer.Click
         FLDFirstName.Clear()
         hasSelected = False
@@ -263,8 +262,7 @@ Class CustomerSelectionPage
 
     Private Sub BTNProceedECustomer_Click(sender As Object, e As RoutedEventArgs) Handles BTNProceedECustomer.Click
         currentCustomer = CMBSearch.SelectedItem
-        MessageBox.Show(currentCustomer.CustomerID)
-        MessageBox.Show(currentCustomer.FullName)
+
         frameMain.Content = cp
         PreviousPage = csp
         hasSelected = False

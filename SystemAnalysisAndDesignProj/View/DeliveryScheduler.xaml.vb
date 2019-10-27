@@ -16,8 +16,9 @@ Class DeliveryScheduler
         buttonSave.IsEnabled = False
         buttonCancel.Visibility = Visibility.Hidden
         buttonCancel.IsEnabled = False
-        buttonDelete.IsEnabled = False
         buttonEdit.IsEnabled = False
+        buttonCancelled.IsEnabled = False
+        buttonDelivered.IsEnabled = False
     End Sub
 
     Public Sub AddEdit()
@@ -27,10 +28,11 @@ Class DeliveryScheduler
         buttonSave.IsEnabled = True
         buttonCancel.Visibility = Visibility.Visible
         buttonCancel.IsEnabled = True
-        buttonDelete.IsEnabled = False
         buttonEdit.IsEnabled = False
         stklbl.IsEnabled = True
         stktxt.IsEnabled = True
+        buttonCancelled.IsEnabled = False
+        buttonDelivered.IsEnabled = False
     End Sub
 
     Private Sub DeliveryScheduler_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
@@ -54,8 +56,9 @@ Class DeliveryScheduler
             stktxt.Visibility = Visibility.Visible
             stklbl.IsEnabled = False
             stktxt.IsEnabled = False
+            buttonCancelled.IsEnabled = False
+            buttonDelivered.IsEnabled = False
             buttonEdit.IsEnabled = True
-            buttonDelete.IsEnabled = True
             Dim selectedRowIndex = GRDDel.SelectedIndex                                                                                                   'gets the index of the currentRow Selected                                                                                                           'gets the rowCount of the whole datagrid    
             Dim di As TextBlock = TryCast(GRDDel.Columns(0).GetCellContent(GRDDel.Items(selectedRowIndex)), TextBlock)                                   'creates a temporary textblock that will hold the value of the cell
             Dim ti As TextBlock = TryCast(GRDDel.Columns(1).GetCellContent(GRDDel.Items(selectedRowIndex)), TextBlock)
@@ -71,28 +74,13 @@ Class DeliveryScheduler
             DPDd.Text = dd.Text
             FLDCtn.Text = ctn.Text
             CBDs.Text = ds.Text.ToUpper
-            If CBDs.Text = "DELIVERED" Then
+            If CBDs.Text = "DELIVERED" Or CBDs.Text = "CANCELLED" Then
                 buttonEdit.IsEnabled = False
-                buttonDelete.IsEnabled = False
+            ElseIf CBDs.Text = "PENDING" Then
+                buttonCancelled.IsEnabled = True
+                buttonDelivered.IsEnabled = True
             End If
         End If
-    End Sub
-
-    Private Sub buttonDelete_Click(sender As Object, e As RoutedEventArgs) Handles buttonDelete.Click
-        If MsgBox("Are you sure you want to Delete?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Message") = MsgBoxResult.Yes Then
-            Try
-                DB.Open(connectionString)
-                DB.Execute("Delete * from Delivery_Job where DeliveryID=" & FLDDi.Text & "")
-                MessageBox.Show("Record was Deleted", "SYSTEM")
-                DB.Close()
-                RecordLog(accountID:=AccountId, loa:=UserType, actionTaken:="DELETED DELIVERY SCHEDULE")
-            Catch EX As Exception
-            End Try
-            PullDataFromDatabase(d:=GRDDel, tableName:="Delivery_Job")
-            Restrictions()
-        End If
-
-
     End Sub
 
     Private Sub buttonEdit_Click(sender As Object, e As RoutedEventArgs) Handles buttonEdit.Click
@@ -114,9 +102,17 @@ Class DeliveryScheduler
             Dim B As New ADODB.Recordset
             A.Open(connectionString)
             B.Open("Select * from Delivery_Job where DeliveryID=" & FLDDi.Text & "", A)
-            If FLDCa.Text = "" Or DPDd.Text = "" Then
+            If FLDCa.Text = "" Or DPDd.Text = "" Or FLDCtn.Text = "" Then
                 MessageBox.Show("All Fields under Delivery is needed to be filled out")
-            ElseIf B.Fields("DeliveryAddress").Value = FLDCa.Text And B.Fields("DeliveryDate").Value = DPDd.Text And B.Fields("DeliveryStatus").Value = CBDs.Text Then
+            ElseIf FLDCa.Text.Length <= 10 Then
+                MsgBox("Address too short")
+            ElseIf FLDCtn.Text.Length < 7 Then
+                MsgBox("Invalid Contact Number")
+            ElseIf FLDCtn.Text.Length > 11 Then
+                MsgBox("Invalid Contact Number")
+            ElseIf FLDCa.Text.Chars(0) = " " Then
+                MsgBox("Address should not start with space")
+            ElseIf B.Fields("DeliveryAddress").Value = FLDCa.Text And B.Fields("DeliveryDate").Value = DPDd.Text And B.Fields("ContactNumber").Value = FLDCtn.Text And B.Fields("DeliveryStatus").Value = CBDs.Text Then
                 MessageBox.Show("No changes made.", "SYSTEM")
             Else
 
@@ -127,6 +123,7 @@ Class DeliveryScheduler
                     .Find("DeliveryID='" & FLDDi.Text & "'")
                     .Fields("DeliveryAddress").Value = FLDCa.Text                                                                                     'Creates new record with the First Name = to the text of the textbox                                                                                         
                     .Fields("DeliveryDate").Value = DPDd.Text                                                                                      'Creates new record with the Last Name = to the text of the textbox
+                    .Fields("ContactNumber").Value = FLDCtn.Text
                     .Fields("DeliveryStatus").Value = CBDs.Text                                                                        'Creates new record with the SelectedDate = to the text of the textbox
                     .Update()
                     MessageBox.Show("Account has been successfully updated", "SYSTEM")
@@ -201,7 +198,23 @@ Class DeliveryScheduler
             binding.StringFormat = "MMMMM-dd-yyyy"
         End If
     End Sub
+    Private Sub buttonCancelled_Click(sender As Object, e As RoutedEventArgs) Handles buttonCancelled.Click
+        buttonSave.Visibility = Visibility.Visible
+        buttonSave.IsEnabled = True
+        buttonCancel.Visibility = Visibility.Visible
+        buttonCancel.IsEnabled = True
+        buttonSave.Content = "UPDATE"
+        CBDs.Text = "CANCELLED"
+    End Sub
 
+    Private Sub buttonDelivered_Click(sender As Object, e As RoutedEventArgs) Handles buttonDelivered.Click
+        buttonSave.Visibility = Visibility.Visible
+        buttonSave.IsEnabled = True
+        buttonCancel.Visibility = Visibility.Visible
+        buttonCancel.IsEnabled = True
+        buttonSave.Content = "UPDATE"
+        CBDs.Text = "DELIVERED"
+    End Sub
 
 #Region "keypress"
     Private Sub FLDCa_PreviewKeyDown(sender As Object, e As KeyEventArgs) Handles FLDCa.PreviewKeyDown
@@ -231,6 +244,24 @@ Class DeliveryScheduler
             e.Handled = False
         ElseIf x = Key.Tab Then
             DPDd.Focus()
+        ElseIf x = Key.Enter Or x = Key.Down Then
+            FLDCtn.Focus()
+        ElseIf x = Key.Up Then
+            FLDCa.Focus()
+        Else
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub FLDCtn_PreviewKeyDown(sender As Object, e As KeyEventArgs) Handles FLDCtn.PreviewKeyDown
+        Dim x As String
+        x = e.Key
+        If x = Key.Back Or x = Key.Left Or x = Key.Right Then
+            e.Handled = False
+        ElseIf (Keyboard.IsKeyUp(Key.RightShift) And Keyboard.IsKeyUp(Key.LeftShift) And x >= Key.NumPad0 And x <= Key.NumPad9) Or (Keyboard.IsKeyUp(Key.RightShift) And Keyboard.IsKeyUp(Key.LeftShift) And x >= Key.D0 And x <= Key.D9) Then
+            e.Handled = False
+        ElseIf x = Key.Tab Then
+            FLDCtn.Focus()
         ElseIf x = Key.Enter Or x = Key.Down Then
             CBDs.Focus()
         ElseIf x = Key.Up Then

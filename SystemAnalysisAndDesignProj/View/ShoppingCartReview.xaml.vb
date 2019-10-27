@@ -185,7 +185,6 @@ Class ShoppingCartReview
 
         PaymentControl.listOfProductsBrought = listOfItemsBought
     End Sub
-
     Private Sub DPDeliveryDate_CalendarOpened(sender As Object, e As RoutedEventArgs) Handles DPDeliveryDate.CalendarOpened
         DPDeliveryDate.DisplayDate = Now
         Dim startdate As New DateTime

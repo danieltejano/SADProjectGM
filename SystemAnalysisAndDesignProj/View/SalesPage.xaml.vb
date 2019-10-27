@@ -10,7 +10,7 @@ Public Class SalesPage
     Public dm As String
 
     Private Sub Sales_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
-        PullDataFromDatabase(d:=GRDSales, tableName:="ProductsPurchased")
+        PullDataFromDatabase(d:=GRDSales, tableName:="ProductPurchased")
     End Sub
 
     Private Sub GRDSales_AutoGeneratingColumn(sender As Object, e As DataGridAutoGeneratingColumnEventArgs) Handles GRDSales.AutoGeneratingColumn
