@@ -1,0 +1,93 @@
+﻿<Window x:Class="MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="498.225" Width="483.667" WindowStyle="None" Background="{x:Null}"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        FontFamily="{DynamicResource MaterialDesignFont}" ResizeMode="NoResize" Foreground="{x:Null}" AllowsTransparency="True" ShowInTaskbar="False" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Storyboard x:Key="ProceedtoLogin"/>
+    </Window.Resources>
+
+    <Grid Margin="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+
+        </Grid.ColumnDefinitions>
+        <Rectangle HorizontalAlignment="Center" Height="496" VerticalAlignment="Top" Width="484" RadiusY="49" RadiusX="49" >
+            <Rectangle.Effect>
+                <BlurEffect Radius="2"/>
+            </Rectangle.Effect>
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                    <GradientStop Color="#FFFAFAFA" Offset="0"/>
+                    <GradientStop Color="#FFFAFAFA" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <Button
+    Style="{StaticResource MaterialDesignRaisedAccentButton}"
+    Height="Auto"
+    materialDesign:ButtonAssist.CornerRadius="49 49 0 0"
+    ToolTip="MaterialDesignRaisedAccentButton with Round Top Corners" Margin="0,-2,0,449" BorderBrush="{x:Null}" ClipToBounds="True" Grid.ColumnSpan="2">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                    <GradientStop Color="#FF4DFBE3" Offset="0"/>
+                    <GradientStop Color="#FF2DF98A" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+
+        </Button>
+
+        <Grid VerticalAlignment="Top" Height="498">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="40"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock x:Name="LBLWelcome" VerticalAlignment="Top" TextAlignment="Center" FontSize="24"  Foreground="#FF515151" Grid.Row="1" Margin="0,0,41,0.667" Height="28"><Run Text="Login to"/></TextBlock>
+            <TextBlock x:Name="LBLErrorMessage" VerticalAlignment="Bottom" TextAlignment="Center" FontSize="24"  Foreground="#FF515151" Grid.Row="2" Margin="0,0,41,55" Height="28" Grid.RowSpan="2" Visibility="Hidden"><Run Text="Error Message"/></TextBlock>
+            <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="89,35,78,36" HorizontalAlignment="Center" Width="359" Grid.RowSpan="2">
+                <TextBlock x:Name="LBLClientName" TextAlignment="Center" Foreground="#FF515151" Text="GM" FontSize="72" FontFamily="Megrim" FontWeight="SemiBold" Width="115"/>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock  TextAlignment="Left" Foreground="#FF515151" Text="Furniture" FontSize="34" Margin="0,10,0,-11.667" FontFamily="Barlow Thin" Height="35" FontWeight="SemiBold" Width="Auto" VerticalAlignment="Top"/>
+                    <TextBlock  TextAlignment="Left" Foreground="#FF515151" Text="Sales and Inventory" FontSize="24"  FontFamily="Barlow Thin" Height="35" FontWeight="SemiBold" Width="Auto" Margin="0,10,0,0"  VerticalAlignment="Bottom"/>
+                </StackPanel>
+
+
+            </StackPanel>
+            <Button x:Name="BTNLogin" Content="Login" HorizontalAlignment="Center" Height="40"  Grid.Row="6" VerticalAlignment="Center" Width="166" materialDesign:ButtonAssist.CornerRadius="25" BorderBrush="{x:Null}" Margin="73,10,287,21" Background="#FF078171" FontSize="18"/>
+            <Button x:Name="BTNClear" Content="Clear" HorizontalAlignment="Center" Height="40"  Grid.Row="6" VerticalAlignment="Center" Width="168" materialDesign:ButtonAssist.CornerRadius="25" BorderBrush="{x:Null}" Margin="244,10,114,21" Background="#FFAA332D" FontSize="18"/>
+
+
+            <Button x:Name="BTNClose"  Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"  ToolTip="MaterialDesignFloatingActionMiniDarkButton"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="418,5,68,26.333" Background="{x:Null}" BorderBrush="{x:Null}">
+                <materialDesign:PackIcon Kind="Close" Height="50" Width="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Button>
+
+
+
+        </Grid>
+        <TextBox x:Name="FLDUsername" HorizontalAlignment="Left" Height="62" Margin="0,237,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="483.167" TextAlignment="Center" Foreground="#FF150303" materialDesign:HintAssist.Hint="Username" AutomationProperties.IsColumnHeader="True" HorizontalContentAlignment="Center" FontSize="22"  />
+        <PasswordBox x:Name="FLDPassword" HorizontalAlignment="Left" Height="62" Margin="-0.5,317,0,0"  VerticalAlignment="Top" Width="483.667"  materialDesign:HintAssist.Hint="Password" HorizontalContentAlignment="Center" FontSize="22" Foreground="Black"/>
+
+
+
+    </Grid>
+</Window>

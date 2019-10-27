@@ -1,0 +1,202 @@
+﻿<Window x:Class="MainMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SystemAnalysisAndDesignProj"
+        mc:Ignorable="d"
+        Title="Logs" Height="720" Width="1280"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        FontFamily="{DynamicResource MaterialDesignFont}" ResizeMode="NoResize" Foreground="{x:Null}" AllowsTransparency="True" WindowStartupLocation="CenterScreen" WindowStyle="None">
+    <Window.Resources>
+        <Storyboard x:Key="NotificationPopOut">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="notificationBanner">
+                <EasingDoubleKeyFrame KeyTime="0" Value="15">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="20">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:8" Value="20"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:8.2" Value="15">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="notificationBanner">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-2">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-425">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:8" Value="-425"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:8.2" Value="-2">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource NotificationPopOut}"/>
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Grid>
+
+        <Frame x:Name="MainFrame" HorizontalAlignment="Left" Height="650" Margin="0,70,0,0" VerticalAlignment="Top" Width="1280" NavigationUIVisibility="Hidden"/>
+
+        <materialDesign:DrawerHost Margin="-4,10,0,0" VerticalAlignment="Center" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Height="710">
+            <materialDesign:DrawerHost.LeftDrawerBackground>
+                <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                    <GradientStop Color="#FF4DFBE3" Offset="0"/>
+                    <GradientStop Color="#FF2DF98A" Offset="1"/>
+                </LinearGradientBrush>
+            </materialDesign:DrawerHost.LeftDrawerBackground>
+            <materialDesign:DrawerHost.LeftDrawerContent>
+                <Grid Width="190" Height="650" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="2" Margin="0,30,0,0">
+                        <Button x:Name="NVGAccounts" Margin="10,20,10,5" Foreground="#DD000000" BorderBrush="{x:Null}" Background="White" materialDesign:ButtonAssist.CornerRadius="15">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Account" MinHeight="20" MinWidth="20"/>
+                                <TextBlock Text="Accounts"  Margin="10,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="NVGCustomers" Margin="10,20,10,5" Foreground="#DD000000" BorderBrush="{x:Null}" Background="White" materialDesign:ButtonAssist.CornerRadius="15">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="PersonBadge" MinHeight="20" MinWidth="20"/>
+                                <TextBlock Text="Customers" Margin="10,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="NVGCashier" Margin="10,20,10,5" Foreground="#DD000000" BorderBrush="{x:Null}" Background="White" materialDesign:ButtonAssist.CornerRadius="15">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="CashRegister" MinHeight="20" MinWidth="20"/>
+                                <TextBlock Text="Cashier"  Margin="10,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="NVGDelivery" Margin="10,20,10,5" Foreground="#DD000000" BorderBrush="{x:Null}" Background="White" materialDesign:ButtonAssist.CornerRadius="15">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="TruckDelivery" MinHeight="20" MinWidth="20"/>
+                                <TextBlock Text="Delivery"  Margin="10,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="NVGInventory" Margin="10,20,10,5" Foreground="#DD000000" BorderBrush="{x:Null}" Background="White" materialDesign:ButtonAssist.CornerRadius="15">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="BoxVariant" MinHeight="20" MinWidth="20"/>
+                                <TextBlock Text="Inventory" Margin="10,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="NVGLogs" Margin="10,20,10,5" Foreground="#DD000000" BorderBrush="{x:Null}" Background="White" materialDesign:ButtonAssist.CornerRadius="15">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="FileDocumentBoxes" MinHeight="20" MinWidth="20"/>
+                                <TextBlock Text="Logs"  Margin="10,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="Sales" Margin="10,20,10,5" Foreground="#DD000000" BorderBrush="{x:Null}" Background="White" materialDesign:ButtonAssist.CornerRadius="15">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="FileReport" MinHeight="20" MinWidth="20"/>
+                                <TextBlock Text="Sales" Margin="10,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="Supplier" Margin="10,20,10,5" Foreground="#DD000000" BorderBrush="{x:Null}" Background="White" materialDesign:ButtonAssist.CornerRadius="15">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="FileReport" MinHeight="20" MinWidth="20"/>
+                                <TextBlock Text="Supplier" Margin="10,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                    <Button x:Name="NVGClose" Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" ToolTip="Close Navigation" Margin="151,12,10,10" Height="Auto" Width="Auto" Background="White" BorderBrush="{x:Null}" Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}">
+                        <materialDesign:PackIcon Kind="Close" Height="20" Width="20" />
+                    </Button>
+                </Grid>
+                
+            </materialDesign:DrawerHost.LeftDrawerContent>
+            <Button Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}"
+        CommandParameter="{x:Static Dock.Left}"
+        Margin="0,325,1231,314" Height="Auto" BorderBrush="{x:Null}" HorizontalAlignment="Right" Width="49">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                        <GradientStop Color="#FF4DFBE3" Offset="0"/>
+                        <GradientStop Color="#FF2DF98A" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+                <materialDesign:PackIcon Kind="ArrowLeft" Height="47" Width="23" Foreground="#DDFFFFFF" OpacityMask="White" />
+            </Button>
+            
+            
+        </materialDesign:DrawerHost>
+        <local:NotificationBanner x:Name="notificationBanner" HorizontalAlignment="Left" Height="125" Margin="1301,49,-427,0" VerticalAlignment="Top" Width="406" RenderTransformOrigin="0.5,0.5">
+            <local:NotificationBanner.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </local:NotificationBanner.RenderTransform>
+        </local:NotificationBanner>
+        <Grid Height="51" Width="1280" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                    <GradientStop Color="#FF4DFBE3" Offset="0"/>
+                    <GradientStop Color="#FF2DF98A" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="1100"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+
+
+            <StackPanel Orientation="Horizontal" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="center" Margin="1070,6,30,5"  >
+                <Button x:Name="BTNLogout"  Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"  ToolTip="MaterialDesignFloatingActionMiniDarkButton"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,0,0" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalContentAlignment="Center" Height="48" Width="47" >
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="22" Color="#FF2B2B2B" ShadowDepth="4" Opacity="0.35"/>
+                    </Button.Effect>
+                    <materialDesign:PackIcon Kind="Logout" Height="38" Width="45" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
+                </Button>
+                <Button  Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"  ToolTip="MaterialDesignFloatingActionMiniDarkButton"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,0,0" Background="{x:Null}" BorderBrush="{x:Null}" Click="Button_Click">
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="22" Color="#FF2B2B2B" ShadowDepth="4" Opacity="0.35"/>
+                    </Button.Effect>
+                    <materialDesign:PackIcon Kind="Close" Height="50" Width="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Button>
+            </StackPanel>
+
+
+
+            <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="center"  >
+                <Button x:Name="BackButton" ToolTip="Back Button"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,0,0" Background="{x:Null}" BorderBrush="{x:Null}">
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="22" Color="#FF2B2B2B" ShadowDepth="4" Opacity="0.35"/>
+                    </Button.Effect>
+                    <materialDesign:PackIcon Kind="ArrowBack" Height="50" Width="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

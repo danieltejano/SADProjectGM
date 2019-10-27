@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="ShoppingCartItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SystemAnalysisAndDesignProj"
+             mc:Ignorable="d" d:DesignWidth="420"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="13"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             FontFamily="{DynamicResource MaterialDesignFont}" Foreground="{x:Null}" Height="156.361">
+
+    <materialDesign:Card Height="156">
+        <StackPanel Orientation="Horizontal">
+
+            <Image x:Name="ShoppingChartItemImage" HorizontalAlignment="Left" Width="156" Source="/SystemAnalysisAndDesignProj;component/Assets/furniture-logo.jpg" Height="156" VerticalAlignment="Top"/>
+            <StackPanel Margin="5,0,0,0">
+                <StackPanel Orientation="Horizontal" Height="51" Margin="0,10,0,0">
+                    <TextBlock x:Name="ShoppingCartItemName" TextWrapping="Wrap" Text="{Binding ProductName}"  Foreground="#FF5D5D5D"  Width="208" RenderTransformOrigin="0.5,0.5" FontSize="22" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="51">
+                        
+                    </TextBlock>
+                    <Button x:Name="DeleteButton" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" ToolTip="MaterialDesignFloatingActionMiniDarkButton" Height="25" Margin="15,0,0,0" Width="25" Background="#FFE7E6EA" BorderBrush="{x:Null}" Foreground="#DD4D4D4D" VerticalAlignment="Top">
+                        <materialDesign:PackIcon Kind="Delete" Height="20" Width="20" />
+                    </Button>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Width="259">
+
+                    <TextBlock x:Name="ShoppingCartItemPrice" Height="22" TextWrapping="Wrap" Text="{Binding ProductCurrencyPrice}" Foreground="#FF5D5D5D" Background="{x:Null}" FontSize="16" FontWeight="Bold" />
+                    <TextBlock x:Name="ShoppingCartItemCategory" Height="18" FontSize="14" TextWrapping="Wrap" Text="{Binding Category}" Foreground="#FF5D5D5D" Background="{x:Null}" />
+                    <StackPanel Orientation="Horizontal" Height="20">
+                        <TextBlock x:Name="ShoppingCartItemActualQuantity" Height="24" FontSize="14" TextWrapping="Wrap" Text="Quantity:" Foreground="#FF5D5D5D" Background="{x:Null}"  Width="55" Margin="0,0,0,-4" />
+                        <TextBlock x:Name="ShoppingCartItemQuantity" FontSize="12" TextWrapping="Wrap" Text="{Binding Quantity}"  Foreground="#FF5D5D5D" Background="{x:Null}" Margin="0,1,0,0"  />
+                    </StackPanel>
+                    <TextBlock x:Name="ShoppingCartItemProductID" Height="12" FontSize="10" TextWrapping="Wrap" Text="{Binding ProductID}" Foreground="#FF979696" Background="{x:Null}" Margin="158,0,10,0" TextAlignment="Right" />
+                </StackPanel>
+
+            </StackPanel>
+        </StackPanel>
+
+    </materialDesign:Card>
+</UserControl>

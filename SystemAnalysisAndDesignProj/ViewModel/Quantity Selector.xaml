@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="Quantity_Selector"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SystemAnalysisAndDesignProj"
+             mc:Ignorable="d" Height="107.445" Width="358.551"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      TextElement.FontWeight="Regular"
+      TextElement.FontSize="13"
+      TextOptions.TextFormattingMode="Ideal"
+      TextOptions.TextRenderingMode="Auto"
+      FontFamily="{DynamicResource MaterialDesignFont}" Foreground="{x:Null}" BorderBrush="#FF474747">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="37*"/>
+            <RowDefinition Height="70*"/>
+        </Grid.RowDefinitions>
+        <TextBlock HorizontalAlignment="Left" Margin="46,28,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Quantity:" VerticalAlignment="Top" Height="18" Width="69" Foreground="#FF535353"/>
+        <TextBox x:Name="FLDqty" HorizontalAlignment="Left" Height="25" Margin="133,24,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Foreground="#FF535353" materialDesign:HintAssist.Hint="How Many?">
+            <TextBox.CaretBrush>
+                <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                    <GradientStop Color="#FF4DFBE3" Offset="0"/>
+                    <GradientStop Color="#FF2DF98A" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBox.CaretBrush>
+        </TextBox>
+        <Rectangle HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="359">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                    <GradientStop Color="#FF4DFBE3" Offset="0"/>
+                    <GradientStop Color="#FF2DF98A" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <TextBlock HorizontalAlignment="Left" Margin="12,9,0,0" TextWrapping="Wrap" Text="{Binding ProductName}" VerticalAlignment="Top" Height="18" Width="268" Foreground="White" FontWeight="Bold" FontSize="16"/>
+        <Button x:Name="QTYClose" HorizontalAlignment="Left" Margin="322,4,0,0" VerticalAlignment="Top" Width="25" Height="25" materialDesign:ButtonAssist.CornerRadius="15" Background="White" BorderBrush="{x:Null}" Foreground="#DD4B4A4A"/>
+        <materialDesign:PackIcon Kind="Close" Foreground="#FF464646" Margin="327,9,0,0" IsEnabled="False"/>
+        <Button x:Name="BTNConfirm" HorizontalAlignment="Left" Margin="314.438,24,0,0" VerticalAlignment="Top" Width="25" Height="25" materialDesign:ButtonAssist.CornerRadius="15" Background="#FF16E47D" BorderBrush="{x:Null}" Foreground="#DD4B4A4A" Grid.Row="1"/>
+        <materialDesign:PackIcon Kind="Check" Foreground="White" Margin="319.123,29.055,0,0" IsEnabled="False" Grid.Row="1"/>
+    </Grid>
+</UserControl>

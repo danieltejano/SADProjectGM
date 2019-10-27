@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="NotificationBanner"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SystemAnalysisAndDesignProj"
+             mc:Ignorable="d" Height="112.337" Width="406.841" Background="White"
+              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="13"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             FontFamily="{DynamicResource MaterialDesignFont}" Foreground="{x:Null}" >
+    <UserControl.Resources>
+        <Storyboard x:Key="NotificationActiveLooping">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="packIcon" RepeatBehavior="0:0:4">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-22.297">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <QuarticEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="22.234">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <QuarticEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-67.049">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <QuarticEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <QuarticEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource NotificationActiveLooping}"/>
+        </EventTrigger>
+    </UserControl.Triggers>
+    <Grid Background="#FFE6E6E6">
+        <materialDesign:PackIcon x:Name="packIcon" Kind="Alert" Foreground="#FFEC1010" Height="Auto" Width="45" Margin="0,24,332,46" VerticalAlignment="Stretch" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5">
+            <materialDesign:PackIcon.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </materialDesign:PackIcon.RenderTransform>
+        </materialDesign:PackIcon>
+        <Label x:Name="LBLNotificationHeader" Content="NotificationHeader" HorizontalAlignment="Left" Margin="110,10,0,0" VerticalAlignment="Top" Width="265" Foreground="#DD000000" FontSize="16" Grid.IsSharedSizeScope="True"/>
+        <TextBlock x:Name="LBLNotificationBody" HorizontalAlignment="Left" Margin="110,44.2,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="58.137" Width="265" Foreground="#DD000000"/>
+
+    </Grid>
+</UserControl>

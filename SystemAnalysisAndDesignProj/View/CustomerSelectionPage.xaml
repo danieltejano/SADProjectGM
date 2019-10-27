@@ -1,0 +1,166 @@
+﻿<Page x:Class="CustomerSelectionPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SystemAnalysisAndDesignProj"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="1280"
+      Title="CustomerSelectionPage"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      TextElement.FontWeight="Regular"
+      TextElement.FontSize="13"
+      TextOptions.TextFormattingMode="Ideal"
+      TextOptions.TextRenderingMode="Auto"
+      FontFamily="{DynamicResource MaterialDesignFont}" Foreground="#FF575757">
+    <Page.Resources>
+        <Storyboard x:Key="ColorLoopOrange">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[0].(GradientStop.Offset)" Storyboard.TargetName="BTNECustomer">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="BTNECustomer">
+                <EasingColorKeyFrame KeyTime="0:0:0.7" Value="#FFDE0A88">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseInOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+                <EasingColorKeyFrame KeyTime="0:0:2" Value="#FFE62296">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseInOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+            </ColorAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="BTNECustomer">
+                <EasingColorKeyFrame KeyTime="0:0:0.7" Value="#FFF4FF04">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseInOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+                <EasingColorKeyFrame KeyTime="0:0:2" Value="#FFFFFF04">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseInOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+            </ColorAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Offset)" Storyboard.TargetName="BTNECustomer">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="0.004">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Page.Resources>
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource ColorLoopOrange}"/>
+        </EventTrigger>
+    </Page.Triggers>
+    <Grid x:Name="GRDMain" Background="White" Margin="3,0,-3,0">
+        <Grid x:Name="GRDECustomer" Margin="336,185,654,91">
+            <Button x:Name="BTNECustomer"  HorizontalAlignment="Left" Height="361" VerticalAlignment="Top" Width="284" materialDesign:ButtonAssist.CornerRadius="100" Margin="0,10,0,0" BorderBrush="{x:Null}" ScrollViewer.HorizontalScrollBarVisibility="Auto" IsCancel="True" IsDefault="True">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF347AD" Offset="0.004"/>
+                        <GradientStop Color="#FFFFFF04" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+                <materialDesign:PackIcon Kind="AccountTie" Foreground="White" Height="214" Width="214" HorizontalAlignment="Center" Margin="0,0,0,100"/>
+            </Button>
+            <TextBlock HorizontalAlignment="Left" Margin="0,225,0,0" TextWrapping="Wrap" Text="Existing Customer" VerticalAlignment="Top" Foreground="White" FontSize="24" TextAlignment="Center" FontWeight="ExtraLight" Width="285"/>
+
+            <ComboBox x:Name="CMBSearch" HorizontalAlignment="Left" Margin="27,277,0,0" VerticalAlignment="Top" Width="231" IsEditable="True" Height="33" Background="White" materialDesign:ButtonAssist.CornerRadius="24" TextSearch.TextPath="FullName" IsSynchronizedWithCurrentItem="True" IsHitTestVisible="False"/>
+        </Grid>
+        <Grid x:Name="GRDNewCustomer" Margin="662,185,328,91">
+            <Button x:Name="BTNNewCustomer"  HorizontalAlignment="Left" Height="361" VerticalAlignment="Top" Width="284" materialDesign:ButtonAssist.CornerRadius="100" Margin="0,10,0,0" BorderBrush="{x:Null}">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                        <GradientStop Color="#FF00DCFF" Offset="0"/>
+                        <GradientStop Color="#FFF347AD" Offset="0.996"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+                <materialDesign:PackIcon x:Name="ICONewCustomer" Kind="AccountTie" Foreground="White" Height="214" Width="214" HorizontalAlignment="Center" Margin="0,0,0,100"/>
+            </Button>
+            <TextBlock x:Name="LBLNewCustomer" HorizontalAlignment="Left" Margin="0,225,0,0" TextWrapping="Wrap" Text="New Customer" VerticalAlignment="Top" Foreground="White" FontSize="24" TextAlignment="Center" FontWeight="ExtraLight" Width="285" IsEnabled="False"/>
+            <TextBlock x:Name="LBLCustomerID" HorizontalAlignment="Left" Margin="75.892,51.4,0,0" TextWrapping="Wrap" Text="First Name:" VerticalAlignment="Top" Foreground="White" FontSize="18" FontWeight="ExtraLight" Width="143" TextAlignment="Center"/>
+            <TextBox x:Name="FLDFirstName" TextWrapping="Wrap" Margin="38,73,48,270" FontSize="14" CaretBrush="{x:Null}" Foreground="White" FontWeight="ExtraLight" BorderBrush="#89FFFFFF"/>
+            <TextBlock x:Name="LBLFirstName" HorizontalAlignment="Left" Margin="75.892,110.4,0,0" TextWrapping="Wrap" Text="Last Name:" VerticalAlignment="Top" Foreground="White" FontSize="18" FontWeight="ExtraLight" Width="143" TextAlignment="Center"/>
+            <TextBox x:Name="FLDLastName" TextWrapping="Wrap" Margin="38,137,48,206" FontSize="14" CaretBrush="{x:Null}" Foreground="White" FontWeight="ExtraLight" BorderBrush="#89FFFFFF"/>
+            <TextBlock x:Name="LBLLastName" HorizontalAlignment="Left" Margin="75.892,173,0,0" TextWrapping="Wrap" Text="Contact Number" VerticalAlignment="Top" Foreground="White" FontSize="18" FontWeight="ExtraLight" Width="143" TextAlignment="Center"/>
+            <TextBox x:Name="FLDContactNumber" TextWrapping="Wrap" Margin="38,197,48,146" FontSize="14" CaretBrush="{x:Null}" Foreground="White" FontWeight="ExtraLight" BorderBrush="#89FFFFFF"/>
+            <TextBlock x:Name="LBLAddress" HorizontalAlignment="Left" Margin="75.892,233,0,0" TextWrapping="Wrap" Text="Address:" VerticalAlignment="Top" Foreground="White" FontSize="18" FontWeight="ExtraLight" Width="143" TextAlignment="Center"/>
+        </Grid>
+
+
+        <TextBlock HorizontalAlignment="Left" Margin="504,114,0,0" TextWrapping="Wrap" Text="Customer Selection" VerticalAlignment="Top" FontSize="36" TextAlignment="Justify" FontWeight="Light"/>
+        <TextBlock HorizontalAlignment="Left" Margin="544,66,0,0" TextWrapping="Wrap" Text="Open Cashier:" VerticalAlignment="Top" FontSize="36" TextAlignment="Center" FontWeight="Light"/>
+        <Button x:Name="BTNCloseECustomer" HorizontalAlignment="Left" Height="46" Margin="569,202,0,0" VerticalAlignment="Top" Width="46" materialDesign:ButtonAssist.CornerRadius="35" BorderBrush="{x:Null}">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF97878"/>
+                    <GradientStop Color="#FFFF1313" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <materialDesign:PackIcon Kind="Close" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="22" Height="22" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Button>
+        <Button x:Name="BTNCloseNewCustomer" HorizontalAlignment="Left" Height="46" Margin="906,202,0,0" VerticalAlignment="Top" Width="46" materialDesign:ButtonAssist.CornerRadius="35" BorderBrush="{x:Null}">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF97878"/>
+                    <GradientStop Color="#FFFF1313" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <materialDesign:PackIcon Kind="Close" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="22" Height="22" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Button>
+        <RichTextBox x:Name="LFLDAddress" HorizontalAlignment="Left" Height="73" Margin="699,441,0,0" VerticalAlignment="Top" Width="205" BorderBrush="#89FFFFFF" CaretBrush="White" Foreground="White" FontWeight="ExtraLight" FontSize="14" IsTabStop="False">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text=""/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+        <Button x:Name="BTNProceedNewCustomer" Content="Proceed" HorizontalAlignment="Left" Height="30" Margin="717,573,0,0" VerticalAlignment="Top" Width="174" FontWeight="ExtraLight" Background="{x:Null}" materialDesign:ButtonAssist.CornerRadius="15">
+            <Button.Foreground>
+                <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                    <GradientStop Color="#FF47BCF3" Offset="0"/>
+                    <GradientStop Color="#FFD209FF" Offset="0.996"/>
+                </LinearGradientBrush>
+            </Button.Foreground>
+            <Button.BorderBrush>
+                <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                    <GradientStop Color="#FF47BCF3" Offset="0"/>
+                    <GradientStop Color="#FFD209FF" Offset="0.996"/>
+                </LinearGradientBrush>
+            </Button.BorderBrush>
+        </Button>
+        <Button x:Name="BTNProceedECustomer" Content="Proceed" HorizontalAlignment="Left" Height="30" Margin="391,573,0,0" VerticalAlignment="Top" Width="174" FontWeight="ExtraLight" Background="{x:Null}" materialDesign:ButtonAssist.CornerRadius="15">
+            <Button.BorderBrush>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF347AD" Offset="0.004"/>
+                    <GradientStop Color="#FF09757A" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.BorderBrush>
+            <Button.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF347AD" Offset="0.004"/>
+                    <GradientStop Color="#FF057C81" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Foreground>
+        </Button>
+
+    </Grid>
+</Page>
