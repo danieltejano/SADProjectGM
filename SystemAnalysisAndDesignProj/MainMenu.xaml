@@ -173,13 +173,13 @@
 
 
             <StackPanel Orientation="Horizontal" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="center" Margin="1070,6,30,5"  >
-                <Button x:Name="BTNLogout"  Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"  ToolTip="MaterialDesignFloatingActionMiniDarkButton"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,0,0" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalContentAlignment="Center" Height="48" Width="47" >
+                <Button x:Name="BTNLogout"  Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"  ToolTip="Log Out"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,0,0" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalContentAlignment="Center" Height="48" Width="47">
                     <Button.Effect>
                         <DropShadowEffect BlurRadius="22" Color="#FF2B2B2B" ShadowDepth="4" Opacity="0.35"/>
                     </Button.Effect>
                     <materialDesign:PackIcon Kind="Logout" Height="38" Width="45" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
                 </Button>
-                <Button  Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"  ToolTip="MaterialDesignFloatingActionMiniDarkButton"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,0,0" Background="{x:Null}" BorderBrush="{x:Null}" Click="Button_Click">
+                <Button  Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"  ToolTip="Exit"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,0,0" Background="{x:Null}" BorderBrush="{x:Null}" Click="Button_Click">
                     <Button.Effect>
                         <DropShadowEffect BlurRadius="22" Color="#FF2B2B2B" ShadowDepth="4" Opacity="0.35"/>
                     </Button.Effect>
@@ -190,7 +190,7 @@
 
 
             <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="center"  >
-                <Button x:Name="BackButton" ToolTip="Back Button"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,0,0" Background="{x:Null}" BorderBrush="{x:Null}">
+                <Button x:Name="BackButton" ToolTip="Back"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,0,0" Background="{x:Null}" BorderBrush="{x:Null}">
                     <Button.Effect>
                         <DropShadowEffect BlurRadius="22" Color="#FF2B2B2B" ShadowDepth="4" Opacity="0.35"/>
                     </Button.Effect>

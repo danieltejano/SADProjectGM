@@ -5,10 +5,13 @@ Imports MaterialDesignThemes.Wpf
 
 Public Class MainMenu
     Private databaseConnection As New OleDbConnection
-    Private csptrigger_WORKAROUND As Boolean = False
     Dim DB As New ADODB.Connection
     Private Sub Button_Click(sender As Object, e As RoutedEventArgs)
-        CloseProgram(Me)
+        Dim can As String
+        can = MessageBox.Show("Do you want to exit ?", "SYSTEM", MessageBoxButton.YesNo, MessageBoxImage.Exclamation)
+        If can = vbYes Then
+            CloseProgram(Me)
+        End If
     End Sub
 
     Private Sub GenerateCUSTID()
@@ -38,8 +41,8 @@ Public Class MainMenu
         End If
 
         CheckStocks()
-
         BackButton.IsEnabled = False
+
     End Sub
 
     Private Sub BackButton_Click(sender As Object, e As RoutedEventArgs) Handles BackButton.Click
@@ -48,8 +51,6 @@ Public Class MainMenu
         runningTotal = 0
         runningCount = 0
         cp = newcashierpage
-
-
     End Sub
 
     Private Sub NVGAccounts_Click(sender As Object, e As RoutedEventArgs) Handles NVGAccounts.Click
@@ -57,23 +58,13 @@ Public Class MainMenu
         frameMain.Content = accp
         NVGClose.Command.Execute("{x:Static materialDesign:DrawerHost.CloseDrawerCommand}")
         PreviousPage = mmp
-
     End Sub
 
     Private Sub NVGCashier_Click(sender As Object, e As RoutedEventArgs) Handles NVGCashier.Click
         BackButton.IsEnabled = True
-        If csptrigger_WORKAROUND Then
-            frameMain.Content = csp
-            NVGClose.Command.Execute("{x:Static materialDesign:DrawerHost.CloseDrawerCommand}")
-            PreviousPage = mmp
-            csptrigger_WORKAROUND = True
-        Else
-            csp = bcsp
-            frameMain.Content = csp
-            NVGClose.Command.Execute("{x:Static materialDesign:DrawerHost.CloseDrawerCommand}")
-            PreviousPage = mmp
-            csptrigger_WORKAROUND = False
-        End If
+        NVGClose.Command.Execute("{x:Static materialDesign:DrawerHost.CloseDrawerCommand}")
+        frameMain.Content = csp
+        PreviousPage = mmp
     End Sub
 
     Private Sub NVGInventory_Click(sender As Object, e As RoutedEventArgs) Handles NVGInventory.Click
@@ -113,14 +104,17 @@ Public Class MainMenu
 
 
     Private Sub BTNLogout_Click(sender As Object, e As RoutedEventArgs) Handles BTNLogout.Click
-        Me.Hide()
-        DB.Open(connectionString)
-        DB.Execute("Delete * From Status")
-        DB.Close()
-        Dim mainmenu As New MainWindow
-        mainmenu.Show()
-
-        RecordLog(accountID:=AccountId, loa:=UserType, actionTaken:="LOGGED OUT")
+        Dim can As String
+        can = MessageBox.Show("Do you want to log out ?", "SYSTEM", MessageBoxButton.YesNo, MessageBoxImage.Exclamation)
+        If can = vbYes Then
+            Me.Hide()
+            DB.Open(connectionString)
+            DB.Execute("Delete * From Status")
+            DB.Close()
+            Dim mainmenu As New MainWindow
+            mainmenu.Show()
+            RecordLog(accountID:=AccountId, loa:=UserType, actionTaken:="LOGGED OUT")
+        End If
     End Sub
 
     Private Sub NVGDelivery_Click(sender As Object, e As RoutedEventArgs) Handles NVGDelivery.Click
@@ -136,6 +130,4 @@ Public Class MainMenu
         present.Begin()
 
     End Sub
-
-
 End Class
