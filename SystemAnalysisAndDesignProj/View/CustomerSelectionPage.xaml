@@ -96,11 +96,11 @@
                 <materialDesign:PackIcon x:Name="ICONewCustomer" Kind="AccountTie" Foreground="White" Height="214" Width="214" HorizontalAlignment="Center" Margin="0,0,0,100"/>
             </Button>
             <TextBlock x:Name="LBLNewCustomer" HorizontalAlignment="Left" Margin="0,225,0,0" TextWrapping="Wrap" Text="New Customer" VerticalAlignment="Top" Foreground="White" FontSize="24" TextAlignment="Center" FontWeight="ExtraLight" Width="285" IsEnabled="False"/>
-            <TextBlock x:Name="LBLCustomerID" HorizontalAlignment="Left" Margin="75.892,51.4,0,0" TextWrapping="Wrap" Text="First Name:" VerticalAlignment="Top" Foreground="White" FontSize="18" FontWeight="ExtraLight" Width="143" TextAlignment="Center"/>
+            <TextBlock x:Name="LBLCustomerID" HorizontalAlignment="Left" Margin="75.892,51.4,0,0" TextWrapping="Wrap" Text="Customer ID:" VerticalAlignment="Top" Foreground="White" FontSize="18" FontWeight="ExtraLight" Width="143" TextAlignment="Center"/>
             <TextBox x:Name="FLDFirstName" TextWrapping="Wrap" Margin="38,73,48,270" FontSize="14" CaretBrush="{x:Null}" Foreground="White" FontWeight="ExtraLight" BorderBrush="#89FFFFFF"/>
-            <TextBlock x:Name="LBLFirstName" HorizontalAlignment="Left" Margin="75.892,110.4,0,0" TextWrapping="Wrap" Text="Last Name:" VerticalAlignment="Top" Foreground="White" FontSize="18" FontWeight="ExtraLight" Width="143" TextAlignment="Center"/>
+            <TextBlock x:Name="LBLFirstName" HorizontalAlignment="Left" Margin="75.892,110.4,0,0" TextWrapping="Wrap" Text="First Name:" VerticalAlignment="Top" Foreground="White" FontSize="18" FontWeight="ExtraLight" Width="143" TextAlignment="Center"/>
             <TextBox x:Name="FLDLastName" TextWrapping="Wrap" Margin="38,137,48,206" FontSize="14" CaretBrush="{x:Null}" Foreground="White" FontWeight="ExtraLight" BorderBrush="#89FFFFFF"/>
-            <TextBlock x:Name="LBLLastName" HorizontalAlignment="Left" Margin="75.892,173,0,0" TextWrapping="Wrap" Text="Contact Number" VerticalAlignment="Top" Foreground="White" FontSize="18" FontWeight="ExtraLight" Width="143" TextAlignment="Center"/>
+            <TextBlock x:Name="LBLLastName" HorizontalAlignment="Left" Margin="75.892,173,0,0" TextWrapping="Wrap" Text="Last Name" VerticalAlignment="Top" Foreground="White" FontSize="18" FontWeight="ExtraLight" Width="143" TextAlignment="Center"/>
             <TextBox x:Name="FLDContactNumber" TextWrapping="Wrap" Margin="38,197,48,146" FontSize="14" CaretBrush="{x:Null}" Foreground="White" FontWeight="ExtraLight" BorderBrush="#89FFFFFF"/>
             <TextBlock x:Name="LBLAddress" HorizontalAlignment="Left" Margin="75.892,233,0,0" TextWrapping="Wrap" Text="Address:" VerticalAlignment="Top" Foreground="White" FontSize="18" FontWeight="ExtraLight" Width="143" TextAlignment="Center"/>
         </Grid>

@@ -114,7 +114,7 @@
             <Image HorizontalAlignment="Center" Height="270" Grid.RowSpan="8" VerticalAlignment="Center" Width="287"  Grid.ColumnSpan="4" Margin="38,-40,125,419" Source="/SystemAnalysisAndDesignProj;component/Assets/VERYNEWLOGO.jpg" Grid.Column="5">
 
             </Image>
-            <DataGrid x:Name="DGridQue" Grid.Column="8" HorizontalAlignment="Left" Margin="0,69.4,-180,0" Grid.Row="5" VerticalAlignment="Top" Grid.ColumnSpan="3" Height="240" Width="480" Grid.RowSpan="3" CanUserResizeColumns="False" CanUserReorderColumns="False" />
+            <DataGrid x:Name="DGridQue" Grid.Column="8" HorizontalAlignment="Left" Margin="0,69.4,-180,0" Grid.Row="5" VerticalAlignment="Top" Grid.ColumnSpan="3" Height="240" Width="480" Grid.RowSpan="3"/>
             <TextBlock x:Name="LBLFormSubtitle" Text="Welcome, Username" Margin="93,28.4,0,0"  Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="24" Grid.ColumnSpan="4" Foreground="#FF554F4F" Width="248" Height="52" TextAlignment="Center" Grid.RowSpan="2" />
             <TextBlock x:Name="LBLPrintReport"  Text="Print Reports" Grid.Row="7" Grid.Column="5" VerticalAlignment="Bottom" FontSize="22" Foreground="#FF554F4F" Grid.ColumnSpan="2" Margin="10,0,37,426"/>
             <Rectangle Grid.ColumnSpan="2" Grid.Column="5" Fill="White" HorizontalAlignment="Left" Height="18" Margin="128.667,28.833,0,0" Grid.Row="4" VerticalAlignment="Top" Width="114.333"/>
