@@ -161,6 +161,12 @@
     <Compile Include="ViewModel\Quantity Selector.xaml.vb">
       <DependentUpon>Quantity Selector.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\ReminderItem.xaml.vb">
+      <DependentUpon>ReminderItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\RemindersWidget.xaml.vb">
+      <DependentUpon>RemindersWidget.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\ShoppingCartItem.xaml.vb">
       <DependentUpon>ShoppingCartItem.xaml</DependentUpon>
     </Compile>
@@ -243,6 +249,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ViewModel\Quantity Selector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewModel\ReminderItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewModel\RemindersWidget.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
