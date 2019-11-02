@@ -38,6 +38,7 @@ Public Class CustomerPage
 
     Private Sub DeliveryManPage_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
         PullDataFromDatabase(d:=GRDDMan, tableName:="Customer ORDER BY CustomerID ASC")
+        GRDDMan.Columns(0).Visibility = Visibility.Hidden
         Restrictions()
         STKBtn.IsEnabled = True
         CMBCategory.Items.Clear()
@@ -76,15 +77,21 @@ Public Class CustomerPage
             Dim act As TextBlock = TryCast(GRDDMan.Columns(0).GetCellContent(GRDDMan.Items(selectedRowIndex)), TextBlock)                                   'creates a temporary textblock that will hold the value of the cell
             Dim fn As TextBlock = TryCast(GRDDMan.Columns(1).GetCellContent(GRDDMan.Items(selectedRowIndex)), TextBlock)
             Dim ln As TextBlock = TryCast(GRDDMan.Columns(2).GetCellContent(GRDDMan.Items(selectedRowIndex)), TextBlock)
-            Dim bd As TextBlock = TryCast(GRDDMan.Columns(3).GetCellContent(GRDDMan.Items(selectedRowIndex)), TextBlock)
-            Dim adr As TextBlock = TryCast(GRDDMan.Columns(4).GetCellContent(GRDDMan.Items(selectedRowIndex)), TextBlock)
+            Dim bd As TextBlock = TryCast(GRDDMan.Columns(4).GetCellContent(GRDDMan.Items(selectedRowIndex)), TextBlock)
+            Dim adr As TextBlock = TryCast(GRDDMan.Columns(3).GetCellContent(GRDDMan.Items(selectedRowIndex)), TextBlock)
             Dim ctn As TextBlock = TryCast(GRDDMan.Columns(5).GetCellContent(GRDDMan.Items(selectedRowIndex)), TextBlock)
-            FLDAct.Text = act.Text
             FLDFn.Text = fn.Text
             FLDLn.Text = ln.Text
+            Dim A As New ADODB.Connection
+            Dim B As New ADODB.Recordset
+            A.Open(connectionString)
+            B.Open("Select * from Customer where FirstName='" & FLDFn.Text & "'" & "and LastName='" & FLDLn.Text & "'", A)
+            FLDAct.Text = B.Fields("CustomerID").Value
             DPBd.Text = bd.Text
             FLDAdr.Text = adr.Text
             FLDCTn.Text = ctn.Text
+            B.Close()
+            A.Close()
         End If
     End Sub
     Private Sub buttonDelete_Click(sender As Object, e As RoutedEventArgs) Handles buttonDelete.Click
@@ -98,6 +105,7 @@ Public Class CustomerPage
             Catch EX As Exception
             End Try
             PullDataFromDatabase(d:=GRDDMan, tableName:="Customer ORDER BY CustomerID ASC")
+            GRDDMan.Columns(0).Visibility = Visibility.Hidden
             FLDAct.Visibility = Visibility.Visible
             Restrictions()
         End If
@@ -202,6 +210,7 @@ Public Class CustomerPage
             RecordLog(accountID:=AccountId, loa:=UserType, actionTaken:="CUSTOMER INFO UPDATED")
         End If
         PullDataFromDatabase(d:=GRDDMan, tableName:="Customer ORDER BY CustomerID ASC")
+        GRDDMan.Columns(0).Visibility = Visibility.Hidden
     End Sub
 
     Private Sub buttonCancel_Click(sender As Object, e As RoutedEventArgs) Handles buttonCancel.Click

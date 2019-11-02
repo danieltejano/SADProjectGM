@@ -81,6 +81,8 @@ Class AccountsPage
             End Try
         End If
         PullDataFromDatabase(d:=GRDAccounts, tableName:="tblUsers")
+        GRDAccounts.Columns(0).Visibility = Visibility.Hidden
+        GRDAccounts.Columns(2).Visibility = Visibility.Hidden
         FLDAct.Visibility = Visibility.Visible
         Restrictions()
     End Sub
@@ -101,7 +103,7 @@ Class AccountsPage
             A.Open(connectionString)
             B.Open("Select * from tblUsers where Username='" & FLDUsr.Text & "'", A)
             Try
-                If FLDUsr.Text = "" Or FLDPsw.Text = "" Or FLDFn.Text = "" Or FLDLn.Text = "" Or DPBd.Text = "" Or CBLoa.Text = "" Then
+                If FLDUsr.Text = "" Or FLDPsw.Password = "" Or FLDFn.Text = "" Or FLDLn.Text = "" Or DPBd.Text = "" Or CBLoa.Text = "" Then
                     MessageBox.Show("All Fields under User Account is needed to be filled out")
                 ElseIf FLDAdr.Text.Length <= 10 Then
                     MsgBox("Address too short")
@@ -115,7 +117,7 @@ Class AccountsPage
                     .MoveLast()
                     .AddNew()
                     .Fields("Username").Value = FLDUsr.Text
-                    .Fields("Password").Value = FLDPsw.Text
+                    .Fields("Password").Value = FLDPsw.Password
                     .Fields("FirstName").Value = FLDFn.Text
                     .Fields("LastName").Value = FLDLn.Text
                     .Fields("Birthdate").Value = DPBd.SelectedDate
@@ -137,9 +139,9 @@ Class AccountsPage
             Dim B As New ADODB.Recordset
             A.Open(connectionString)
             B.Open("Select * from tblUsers where AccountID=" & FLDAct.Text & "", A)
-            If FLDUsr.Text = "" Or FLDPsw.Text = "" Or FLDFn.Text = "" Or FLDLn.Text = "" Or DPBd.Text = "" Or FLDAdr.Text = "" Or CBLoa.Text = "" Then
+            If FLDUsr.Text = "" Or FLDPsw.Password = "" Or FLDFn.Text = "" Or FLDLn.Text = "" Or DPBd.Text = "" Or FLDAdr.Text = "" Or CBLoa.Text = "" Then
                 MessageBox.Show("All Fields under User Account is needed to be filled out")
-            ElseIf B.Fields("Username").Value = FLDUsr.Text And B.Fields("Password").Value = FLDPsw.Text And B.Fields("Firstname").Value = FLDFn.Text And B.Fields("Lastname").Value = FLDLn.Text And B.Fields("Birthdate").Value = DPBd.Text And B.Fields("Address").Value = FLDAdr.Text And B.Fields("LevelofAccess").Value = CBLoa.Text Then
+            ElseIf B.Fields("Username").Value = FLDUsr.Text And B.Fields("Password").Value = FLDPsw.Password And B.Fields("Firstname").Value = FLDFn.Text And B.Fields("Lastname").Value = FLDLn.Text And B.Fields("Birthdate").Value = DPBd.Text And B.Fields("Address").Value = FLDAdr.Text And B.Fields("LevelofAccess").Value = CBLoa.Text Then
                 MessageBox.Show("No changes made.", "SYSTEM")
             ElseIf FLDAdr.Text.Length <= 10 Then
                 MsgBox("Address too short")
@@ -158,7 +160,7 @@ Class AccountsPage
                         .MoveFirst()
                         .Find("AccountID='" & FLDAct.Text & "'")
                         .Fields("Username").Value = FLDUsr.Text                                                                                     'Creates new record with the Username = to the text of the textbox
-                        .Fields("Password").Value = FLDPsw.Text                                                                                     'Creates new record with the Password = to the text of the textbox
+                        .Fields("Password").Value = FLDPsw.Password                                                                                   'Creates new record with the Password = to the text of the textbox
                         .Fields("FirstName").Value = FLDFn.Text                                                                                     'Creates new record with the First Name = to the text of the textbox                                                                                         
                         .Fields("LastName").Value = FLDLn.Text                                                                                      'Creates new record with the Last Name = to the text of the textbox
                         .Fields("Birthdate").Value = DPBd.SelectedDate                                                                           'Creates new record with the SelectedDate = to the text of the textbox
@@ -176,7 +178,7 @@ Class AccountsPage
                     .MoveFirst()
                     .Find("AccountID='" & FLDAct.Text & "'")
                     .Fields("Username").Value = FLDUsr.Text
-                    .Fields("Password").Value = FLDPsw.Text
+                    .Fields("Password").Value = FLDPsw.Password
                     .Fields("FirstName").Value = FLDFn.Text
                     .Fields("LastName").Value = FLDLn.Text
                     .Fields("Birthdate").Value = DPBd.SelectedDate
@@ -193,6 +195,8 @@ Class AccountsPage
 
         End If
         PullDataFromDatabase(d:=GRDAccounts, tableName:="tblUsers")
+        GRDAccounts.Columns(0).Visibility = Visibility.Hidden
+        GRDAccounts.Columns(2).Visibility = Visibility.Hidden
     End Sub
 
     Private Sub GRDAccounts_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles GRDAccounts.SelectionChanged
@@ -213,14 +217,20 @@ Class AccountsPage
             Dim bd As TextBlock = TryCast(GRDAccounts.Columns(5).GetCellContent(GRDAccounts.Items(selectedRowIndex)), TextBlock)
             Dim adr As TextBlock = TryCast(GRDAccounts.Columns(6).GetCellContent(GRDAccounts.Items(selectedRowIndex)), TextBlock)
             Dim loa As TextBlock = TryCast(GRDAccounts.Columns(7).GetCellContent(GRDAccounts.Items(selectedRowIndex)), TextBlock)
-            FLDAct.Text = act.Text
             FLDUsr.Text = usr.Text
-            FLDPsw.Text = psw.Text
+            Dim A As New ADODB.Connection
+            Dim B As New ADODB.Recordset
+            A.Open(connectionString)
+            B.Open("Select * from tblUsers where Username='" & FLDUsr.Text & "'", A)
+            FLDAct.Text = B.Fields("AccountID").Value
+            FLDPsw.Password = B.Fields("Password").Value
             FLDFn.Text = fn.Text
             FLDLn.Text = ln.Text
             DPBd.Text = bd.Text
             FLDAdr.Text = adr.Text
             CBLoa.Text = loa.Text
+            B.Close()
+            A.Close()
         End If
     End Sub
 
