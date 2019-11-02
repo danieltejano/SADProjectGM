@@ -104,7 +104,7 @@ Module General
             act.Open()
             Dim command As New OleDbCommand("insert into Logs ([AccountID],  [LevelofAccess], [ActionTaken], [ADate])  values ( @AccountId,  @access, @action, @adate)", act)
             Dim dt As String
-            dt = Now.ToLongDateString & " / " & Now.ToLongTimeString
+            dt = Now.ToShortDateString & " / " & Now.ToShortTimeString
             With command.Parameters
                 .AddWithValue("@AccountId", accountID.ToString)
                 .AddWithValue("@access", loa.ToString)

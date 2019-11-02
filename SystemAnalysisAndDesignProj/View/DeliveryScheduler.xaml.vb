@@ -36,7 +36,7 @@ Class DeliveryScheduler
     End Sub
 
     Private Sub DeliveryScheduler_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
-        PullDataFromDatabase(d:=GRDDel, tableName:="Delivery_Job")
+        PullDataFromDatabase(d:=GRDDel, tableName:="Delivery_Job ORDER BY DeliveryStatus DESC")
         Restrictions()
         CBDs.Items.Add("CANCELLED")                        'Adds "Administrator" a Combobox Item in the Level of Access (Loa) Combobox
         CBDs.Items.Add("PENDING")
@@ -133,7 +133,7 @@ Class DeliveryScheduler
             Restrictions()
             RecordLog(accountID:=AccountId, loa:=UserType, actionTaken:="UPDATED DELIVERY SCHEDULE")
         End If
-        PullDataFromDatabase(d:=GRDDel, tableName:="Delivery_Job")
+        PullDataFromDatabase(d:=GRDDel, tableName:="Delivery_Job ORDER BY DeliveryStatus DESC")
     End Sub
 
     Private Sub buttonCancel_Click(sender As Object, e As RoutedEventArgs) Handles buttonCancel.Click
@@ -197,6 +197,8 @@ Class DeliveryScheduler
             Dim binding As Binding = column.Binding
             binding.StringFormat = "MMMMM-dd-yyyy"
         End If
+
+
     End Sub
     Private Sub buttonCancelled_Click(sender As Object, e As RoutedEventArgs) Handles buttonCancelled.Click
         buttonSave.Visibility = Visibility.Visible
@@ -215,6 +217,7 @@ Class DeliveryScheduler
         buttonSave.Content = "UPDATE"
         CBDs.Text = "DELIVERED"
     End Sub
+
 
 #Region "keypress"
     Private Sub FLDCa_PreviewKeyDown(sender As Object, e As KeyEventArgs) Handles FLDCa.PreviewKeyDown
@@ -288,9 +291,11 @@ Class DeliveryScheduler
         DPDd.BlackoutDates.AddDatesInPast()
         Dim startdate As New DateTime
         startdate = DateTime.Today.AddYears(100)
-
         DPDd.BlackoutDates.Add(New CalendarDateRange(start:=startdate, [end]:=startdate.AddYears(2000)))
     End Sub
+
+
+
 
 
 

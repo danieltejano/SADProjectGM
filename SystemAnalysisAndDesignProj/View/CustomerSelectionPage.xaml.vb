@@ -22,7 +22,7 @@ Class CustomerSelectionPage
         LBLFirstName.Visibility = Visibility.Hidden
         FLDFirstName.Visibility = Visibility.Hidden
         LBLLastName.Visibility = Visibility.Hidden
-        FLDLastName.Visibility = Visibility.Hidden
+        FLDLastname.Visibility = Visibility.Hidden
         LBLAddress.Visibility = Visibility.Hidden
         LFLDAddress.Visibility = Visibility.Hidden
         BTNProceedECustomer.Visibility = Visibility.Hidden
@@ -89,7 +89,7 @@ Class CustomerSelectionPage
         LBLFirstName.Visibility = Visibility.Hidden
         FLDFirstName.Visibility = Visibility.Hidden
         LBLLastName.Visibility = Visibility.Hidden
-        FLDLastName.Visibility = Visibility.Hidden
+        FLDLastname.Visibility = Visibility.Hidden
         LBLAddress.Visibility = Visibility.Hidden
         LFLDAddress.Visibility = Visibility.Hidden
         BTNProceedECustomer.Visibility = Visibility.Hidden
@@ -110,7 +110,7 @@ Class CustomerSelectionPage
             LBLFirstName.Visibility = Visibility.Visible
             FLDFirstName.Visibility = Visibility.Visible
             LBLLastName.Visibility = Visibility.Visible
-            FLDLastName.Visibility = Visibility.Visible
+            FLDLastname.Visibility = Visibility.Visible
             LBLAddress.Visibility = Visibility.Visible
             LFLDAddress.Visibility = Visibility.Visible
         End If
@@ -160,7 +160,7 @@ Class CustomerSelectionPage
             LBLFirstName.Visibility = Visibility.Visible
             FLDFirstName.Visibility = Visibility.Visible
             LBLLastName.Visibility = Visibility.Visible
-            FLDLastName.Visibility = Visibility.Visible
+            FLDLastname.Visibility = Visibility.Visible
             LBLAddress.Visibility = Visibility.Visible
             LFLDAddress.Visibility = Visibility.Visible
             FLDFirstName.Focus()
@@ -187,14 +187,14 @@ Class CustomerSelectionPage
         LBLFirstName.Visibility = Visibility.Hidden
         FLDFirstName.Visibility = Visibility.Hidden
         LBLLastName.Visibility = Visibility.Hidden
-        FLDLastName.Visibility = Visibility.Hidden
+        FLDLastname.Visibility = Visibility.Hidden
         LBLAddress.Visibility = Visibility.Hidden
         LFLDAddress.Visibility = Visibility.Hidden
         FLDFirstName.Clear()
     End Sub
 
     Private Sub CustomerSelectionPage_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
-        If (FLDContactNumber.Text <> Nothing) And (FLDFirstName.Text <> Nothing) And (FLDLastName.Text <> Nothing) And (RBXText <> Nothing) Then
+        If (FLDContactNumber.Text <> Nothing) And (FLDFirstName.Text <> Nothing) And (FLDLastname.Text <> Nothing) And (RBXText <> Nothing) Then
             BTNProceedNewCustomer.Visibility = Visibility.Visible
         Else
             BTNProceedNewCustomer.Visibility = Visibility.Hidden
@@ -213,13 +213,13 @@ Class CustomerSelectionPage
         Dim LG As New ADODB.Connection
         Dim CL As New ADODB.Recordset
         A.Open(connectionString)
-        B.Open("Select * from Customer where FirstName='" & FLDFirstName.Text & "'" & "and LastName='" & FLDLastName.Text & "'", A)
+        B.Open("Select * from Customer where FirstName='" & FLDFirstName.Text & "'" & "and LastName='" & FLDLastname.Text & "'", A)
 
         Try
-            If FLDFirstName.Text = B.Fields("FirstName").Value And FLDLastName.Text = B.Fields("LastName").Value Then
+            If FLDFirstName.Text = B.Fields("FirstName").Value And FLDLastname.Text = B.Fields("LastName").Value Then
                 MessageBox.Show("Customer already exists")
                 FLDFirstName.Clear()
-                FLDLastName.Clear()
+                FLDLastname.Clear()
                 FLDFirstName.Focus()
             End If
         Catch ex As Exception
@@ -230,7 +230,7 @@ Class CustomerSelectionPage
                 .Open("Customer", A, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic)
                 .AddNew()
                 .Fields("FirstName").Value = FLDFirstName.Text
-                .Fields("LastName").Value = FLDLastName.Text
+                .Fields("LastName").Value = FLDLastname.Text
                 .Fields("Birthdate").Value = Now
                 .Fields("Address").Value = RBXText
                 .Fields("Contact Number").Value = FLDContactNumber.Text
@@ -239,7 +239,7 @@ Class CustomerSelectionPage
             End With
             A.Close()
             LG.Open(connectionString)
-            CL.Open("Select * from Customer where FirstName='" & FLDFirstName.Text & "'" & "and LastName='" & FLDLastName.Text & "'", LG)
+            CL.Open("Select * from Customer where FirstName='" & FLDFirstName.Text & "'" & "and LastName='" & FLDLastname.Text & "'", LG)
             Dim CID As String = ""
             CID = CL.Fields("CustomerID").Value
 
@@ -248,7 +248,7 @@ Class CustomerSelectionPage
             With newCurrentCustomer
                 .CustomerID = CID
                 .FirstName = FLDFirstName.Text
-                .LastName = FLDLastName.Text
+                .LastName = FLDLastname.Text
                 .Address = RBXText
             End With
             currentCustomer = newCurrentCustomer
@@ -284,14 +284,14 @@ Class CustomerSelectionPage
             e.Handled = False
         ElseIf x = Key.Tab Then
             FLDFirstName.Focus()
-        ElseIf x = Key.Enter Then
-            FLDLastName.Focus()
+        ElseIf x = Key.Enter Or x = Key.Down Then
+            FLDLastname.Focus()
         Else
             e.Handled = True
         End If
     End Sub
 
-    Private Sub FLDLastName_PreviewKeyDown(sender As Object, e As KeyEventArgs) Handles FLDLastName.PreviewKeyDown
+    Private Sub FLDLastName_PreviewKeyDown(sender As Object, e As KeyEventArgs) Handles FLDLastname.PreviewKeyDown
         Dim x As String
         x = e.Key
         If x = Key.Space Or x = Key.Back Or x = Key.Left Or x = Key.Right Then
@@ -299,8 +299,8 @@ Class CustomerSelectionPage
         ElseIf (x >= Key.A And x <= Key.Z) Or (Keyboard.IsKeyUp(Key.RightShift) And Keyboard.IsKeyUp(Key.LeftShift) And x = Key.OemMinus) Or (Keyboard.IsKeyUp(Key.RightShift) And Keyboard.IsKeyUp(Key.LeftShift) And x = Key.OemPeriod) Then
             e.Handled = False
         ElseIf x = Key.Tab Then
-            FLDLastName.Focus()
-        ElseIf x = Key.Enter Then
+            FLDLastname.Focus()
+        ElseIf x = Key.Enter Or x = Key.Down Then
             FLDContactNumber.Focus()
         ElseIf x = Key.Up Then
             FLDFirstName.Focus()
@@ -321,7 +321,7 @@ Class CustomerSelectionPage
         ElseIf x = Key.Enter Or x = Key.Down Then
             LFLDAddress.Focus()
         ElseIf x = Key.Up Then
-            FLDLastName.Focus()
+            FLDLastname.Focus()
         Else
             e.Handled = True
         End If
@@ -338,7 +338,7 @@ Class CustomerSelectionPage
             e.Handled = False
         ElseIf x = Key.Tab Then
             LFLDAddress.Focus()
-        ElseIf x = Key.Enter Then
+        ElseIf x = Key.Enter Or x = Key.Down Then
             BTNProceedNewCustomer.Focus()
         ElseIf x = Key.Up Then
             FLDContactNumber.Focus()

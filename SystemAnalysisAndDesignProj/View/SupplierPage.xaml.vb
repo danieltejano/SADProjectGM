@@ -36,7 +36,7 @@ Public Class SupplierPage
     End Sub
 
     Private Sub SupplierPage_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
-        PullDataFromDatabase(d:=GRDDMan, tableName:="Supplier")
+        PullDataFromDatabase(d:=GRDDMan, tableName:="Supplier ORDER BY SupplierID ASC")
         Restrictions()
         STKBtn.IsEnabled = True
         CMBCategory.Items.Clear()

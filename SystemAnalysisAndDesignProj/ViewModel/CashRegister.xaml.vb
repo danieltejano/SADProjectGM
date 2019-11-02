@@ -76,7 +76,7 @@ Public Class CashRegister
                 .Fields("CashierTransactionID").Value = TransactionID
                 .Fields("CustomerName").Value = currentCustomer.FirstName + " " + currentCustomer.LastName
                 .Fields("DeliveryAddress").Value = currentCustomer.Address
-                .Fields("DeliveryDate").Value =
+                .Fields("DeliveryDate").Value = DeliveryDate
                 .Fields("ContactNumber").Value = 0
                 .Fields("DeliveryStatus").Value = "PENDING"
                 .Update()
@@ -90,7 +90,7 @@ Public Class CashRegister
             Dim command As New OleDbCommand("insert into Cashier_Transaction ([CashierTransactionID], [AccountID],[DateTran],[TotalPrice], [TaxTotal], [TenderAmount], [Change], [toDeliver?], [QuantityPurchased])  
                                                 values ( @CashierTransactionID,  @AccountID, @DateTran, @TotalPrice, @TaxTotal, @TenderAmount, @Change, @toDeliver, @Qty)", act)
             Dim dt As String
-            dt = Now.ToLongDateString & " / " & Now.ToLongTimeString
+            dt = Now.ToShortDateString
             With command.Parameters
                 .AddWithValue("@CashierTransactionID", TransactionID)
                 .AddWithValue("@AccountID", AccountId)

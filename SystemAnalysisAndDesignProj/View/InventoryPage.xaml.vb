@@ -48,7 +48,7 @@ Class InventoryPage
 
 
     Private Sub InventoryPage_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
-        PullDataFromDatabase(d:=GRDInv, tableName:="formula")
+        PullDataFromDatabase(d:=GRDInv, tableName:="formula ORDER BY Category DESC")
         Restrictions()
         STKBtn.IsEnabled = True
         CMBCategory.Items.Clear()
@@ -120,7 +120,7 @@ Class InventoryPage
             Catch EX As Exception
             End Try
         End If
-        PullDataFromDatabase(d:=GRDInv, tableName:="formula")
+        PullDataFromDatabase(d:=GRDInv, tableName:="formula ORDER BY Category DESC")
         FLDPid.Visibility = Visibility.Visible
         Restrictions()
     End Sub
@@ -170,7 +170,7 @@ Class InventoryPage
             Restrictions()
             RecordLog(accountID:=AccountId, loa:=UserType, actionTaken:="AddedStocks")
         End If
-        PullDataFromDatabase(d:=GRDInv, tableName:="formula")
+        PullDataFromDatabase(d:=GRDInv, tableName:="formula ORDER BY Category DESC")
     End Sub
 
     Private Sub btnplus_10_Click(sender As Object, e As RoutedEventArgs) Handles btnplus_10.Click
@@ -335,7 +335,7 @@ Class InventoryPage
                     .Fields("SupplierID").Value = FLDSi.Text
                     .Update()
                     MessageBox.Show("Account has been successfully updated", "SYSTEM")
-                    PullDataFromDatabase(d:=GRDInv, tableName:="formula")
+                    PullDataFromDatabase(d:=GRDInv, tableName:="formula ORDER BY Category DESC")
                 End With
             End If
             A.Close()
@@ -346,7 +346,7 @@ Class InventoryPage
             FLDPid.IsEnabled = True
             RecordLog(accountID:=AccountId, loa:=UserType, actionTaken:="AccountUpdated")
         End If
-        PullDataFromDatabase(d:=GRDInv, tableName:="formula")
+        PullDataFromDatabase(d:=GRDInv, tableName:="formula ORDER BY Category DESC")
     End Sub
 
     Private Sub buttonCancel_Click(sender As Object, e As RoutedEventArgs) Handles buttonCancel.Click

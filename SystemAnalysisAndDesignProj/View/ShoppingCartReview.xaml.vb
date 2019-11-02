@@ -124,8 +124,7 @@ Class ShoppingCartReview
 
     Private Sub BTNDelivery_Click(sender As Object, e As RoutedEventArgs) Handles BTNDelivery.Click
 
-        MessageBox.Show(gTotal)
-        MessageBox.Show(NetAmount)
+
         dFee = 234.0
         LBLVat_Copy.Text = "₱" + Format(gTotal + dFee, "##,##0.00")
         GRDDelivery.Height = 260
@@ -135,6 +134,7 @@ Class ShoppingCartReview
         LFLDDeliveryAddress.Document.Blocks.Add(New Paragraph(New Run(currentCustomer.Address)))
         LBLDeliveryFee.Text = "₱" + Format(DeliveryFee, "##,##0.00")
         toDeliver = True
+
     End Sub
 
     Private Sub BTNDeliveryCLose_Click(sender As Object, e As RoutedEventArgs) Handles BTNDeliveryClose.Click

@@ -37,7 +37,7 @@ Public Class CustomerPage
     End Sub
 
     Private Sub DeliveryManPage_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
-        PullDataFromDatabase(d:=GRDDMan, tableName:="Customer")
+        PullDataFromDatabase(d:=GRDDMan, tableName:="Customer ORDER BY CustomerID ASC")
         Restrictions()
         STKBtn.IsEnabled = True
         CMBCategory.Items.Clear()
@@ -97,7 +97,7 @@ Public Class CustomerPage
                 RecordLog(accountID:=AccountId, loa:=UserType, actionTaken:="DELETED CUSTOMER INFO")
             Catch EX As Exception
             End Try
-            PullDataFromDatabase(d:=GRDDMan, tableName:="Customer")
+            PullDataFromDatabase(d:=GRDDMan, tableName:="Customer ORDER BY CustomerID ASC")
             FLDAct.Visibility = Visibility.Visible
             Restrictions()
         End If
@@ -201,7 +201,7 @@ Public Class CustomerPage
             FLDAct.Visibility = Visibility.Visible
             RecordLog(accountID:=AccountId, loa:=UserType, actionTaken:="CUSTOMER INFO UPDATED")
         End If
-        PullDataFromDatabase(d:=GRDDMan, tableName:="Customer")
+        PullDataFromDatabase(d:=GRDDMan, tableName:="Customer ORDER BY CustomerID ASC")
     End Sub
 
     Private Sub buttonCancel_Click(sender As Object, e As RoutedEventArgs) Handles buttonCancel.Click
