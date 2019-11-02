@@ -49,6 +49,7 @@ Class InventoryPage
 
     Private Sub InventoryPage_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
         PullDataFromDatabase(d:=GRDInv, tableName:="formula ORDER BY Category DESC")
+        GRDInv.Columns(7).Visibility = Visibility.Hidden
         Restrictions()
         STKBtn.IsEnabled = True
         CMBCategory.Items.Clear()
@@ -82,12 +83,18 @@ Class InventoryPage
             Dim si As TextBlock = TryCast(GRDInv.Columns(7).GetCellContent(GRDInv.Items(selectedRowIndex)), TextBlock)
             FLDPid.Text = pid.Text
             FLDPName.Text = pnm.Text
+            Dim A As New ADODB.Connection
+            Dim B As New ADODB.Recordset
+            A.Open(connectionString)
+            B.Open("Select * from Product where ProductID='" & FLDPid.Text & "'" & "or ProductName='" & FLDPName.Text & "'", A)
+            FLDSi.Text = B.Fields("SupplierID").Value
             FLDPrc.Text = prc.Text
             FLDTv.Text = tv.Text
             FLDUs.Text = us.Text
             FLDCat.Text = cat.Text
             FLDUa.Text = ua.Text
-            FLDSi.Text = si.Text
+            B.Close()
+            A.Close()
         End If
     End Sub
 
@@ -121,6 +128,7 @@ Class InventoryPage
             End Try
         End If
         PullDataFromDatabase(d:=GRDInv, tableName:="formula ORDER BY Category DESC")
+        GRDInv.Columns(7).Visibility = Visibility.Hidden
         FLDPid.Visibility = Visibility.Visible
         Restrictions()
     End Sub
@@ -171,6 +179,7 @@ Class InventoryPage
             RecordLog(accountID:=AccountId, loa:=UserType, actionTaken:="AddedStocks")
         End If
         PullDataFromDatabase(d:=GRDInv, tableName:="formula ORDER BY Category DESC")
+        GRDInv.Columns(7).Visibility = Visibility.Hidden
     End Sub
 
     Private Sub btnplus_10_Click(sender As Object, e As RoutedEventArgs) Handles btnplus_10.Click
@@ -347,6 +356,7 @@ Class InventoryPage
             RecordLog(accountID:=AccountId, loa:=UserType, actionTaken:="AccountUpdated")
         End If
         PullDataFromDatabase(d:=GRDInv, tableName:="formula ORDER BY Category DESC")
+        GRDInv.Columns(7).Visibility = Visibility.Hidden
     End Sub
 
     Private Sub buttonCancel_Click(sender As Object, e As RoutedEventArgs) Handles buttonCancel.Click
