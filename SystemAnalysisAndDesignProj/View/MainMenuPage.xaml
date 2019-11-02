@@ -40,7 +40,7 @@
                 <RowDefinition Height="150"/>
                 <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
-            <TextBlock x:Name="LBLQuickAction"  Text="Quick Action" Grid.Row="7" FontSize="22" Foreground="#FF554F4F" Grid.ColumnSpan="2" Margin="0,16.6,10,426" Grid.Column="1" HorizontalAlignment="Right" Width="147"/>
+            <TextBlock x:Name="LBLQuickAction"  Text="Quick Action" Grid.Row="7" FontSize="22" Foreground="#FF554F4F" Grid.ColumnSpan="2" Margin="0,24,45,418" Grid.Column="1" HorizontalAlignment="Right" Width="147"/>
             <StackPanel Margin="93,80,8,99" Orientation="Vertical" Grid.Row="5" Grid.ColumnSpan="3" Grid.RowSpan="3">
                 <Button x:Name="BTNPrintProductPricelist" Content="Print Product Pricelist" VerticalAlignment="Top" Margin="0,0,-57.333,10" BorderBrush="{x:Null}" Style="{StaticResource MaterialDesignRaisedDarkButton}" materialDesign:ButtonAssist.CornerRadius="25" Foreground="#DD2B2B2B" Height="44" FontWeight="Bold" HorizontalContentAlignment="Right">
                     <Button.Background>
@@ -83,7 +83,7 @@
                     </Button.Background>
                 </Button>
             </StackPanel>
-            <TextBlock x:Name="LBLDeliveryQue"  Text="Delivery Queue" Grid.Row="7" Grid.Column="8" FontSize="22" Foreground="#FF554F4F" Margin="71,70,10,373" Grid.ColumnSpan="2"/>
+            <TextBlock x:Name="LBLDeliveryQue"  Text="Delivery Queue" Grid.Row="7" Grid.Column="8" FontSize="22" Foreground="#FF554F4F" Margin="81,70,0,373" Grid.ColumnSpan="2"/>
             <StackPanel HorizontalAlignment="Left" Height="226" Grid.Row="5" VerticalAlignment="Top" Width="249" Margin="-424,90,0,0" Grid.RowSpan="3">
                 <Button x:Name="BTNPrintDailySalesReport" Content="Print Daily Sales Report" HorizontalAlignment="Left" VerticalAlignment="Top" Width="250" Margin="0,10,0,20" BorderBrush="{x:Null}" Foreground="#DDF7F7F7" Height="44" Style="{StaticResource MaterialDesignRaisedDarkButton}" materialDesign:ButtonAssist.CornerRadius="25" FontSize="16">
                     <Button.Background>
@@ -118,7 +118,7 @@
             <TextBlock x:Name="LBLFormSubtitle" Text="Welcome, Username" Margin="93,28.4,0,0"  Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="24" Grid.ColumnSpan="4" Foreground="#FF554F4F" Width="248" Height="52" TextAlignment="Center" Grid.RowSpan="2" />
             <Rectangle Grid.ColumnSpan="2" Grid.Column="5" Fill="White" HorizontalAlignment="Left" Height="18" Margin="128.667,28.833,0,0" Grid.Row="4" VerticalAlignment="Top" Width="114.333"/>
             <Label x:Name="LBLPending" Content="" Grid.Column="8" HorizontalAlignment="Left" Height="42" Margin="87.333,89.5,-144.993,0" Grid.Row="7" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="357.66" FontSize="22"/>
-            <local:RemindersWidget Grid.Column="5" HorizontalAlignment="Left" Height="303" Margin="57,67,0,0" Grid.Row="7" VerticalAlignment="Top" Width="270" Grid.ColumnSpan="4"/>
+            <local:RemindersWidget Grid.ColumnSpan="5" Grid.Column="4" HorizontalAlignment="Left" Height="330" Margin="10,10,0,0" Grid.Row="7" VerticalAlignment="Top" Width="370"/>
 
 
 

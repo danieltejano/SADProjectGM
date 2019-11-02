@@ -5,18 +5,25 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SystemAnalysisAndDesignProj"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Background="White" >
-        <StackPanel>
+             d:DesignHeight="300" d:DesignWidth="300" Width="370" Height="330">
+    <Grid Background="White" Height="auto" Width="auto">
+        <StackPanel Width="auto" Height="auto">
             <StackPanel Margin="15,15,15,0" Height="auto">
                 <TextBlock Text="Reminders" FontSize="16" Foreground="#FF554F4F" />
             </StackPanel>
-            <StackPanel Margin="15,12,15,15" MaxHeight="230" MaxWidth="270">
-                <local:ReminderItem />
-                <local:ReminderItem />
-                <local:ReminderItem />
-                <local:ReminderItem />
-            </StackPanel>
+            <ScrollViewer VerticalScrollBarVisibility="Auto" CanContentScroll="True">
+                <StackPanel Margin="15,12,15,15" MaxHeight="270" MaxWidth="290" >
+                    <StackPanel.Resources>
+                        <Style TargetType="{x:Type local:ReminderItem}">
+                            <Setter Property="Margin" Value="0,10,0,0"/>
+                        </Style>
+                    </StackPanel.Resources>
+                    <local:ReminderItem />
+                    <local:ReminderItem />
+                    <local:ReminderItem />
+                    <local:ReminderItem />
+                </StackPanel>
+            </ScrollViewer>
         </StackPanel>
     </Grid>
 </UserControl>

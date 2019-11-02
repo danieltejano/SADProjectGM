@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SystemAnalysisAndDesignProj"
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="240"
+             d:DesignHeight="100" d:DesignWidth="290"
+
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
             TextElement.FontWeight="Regular"
             TextElement.FontSize="13"
@@ -15,11 +16,11 @@
     
     <Grid Background="White">
         <StackPanel>
-            <StackPanel Width="230" Height="20" Margin="5" Orientation="Horizontal">
+            <StackPanel Width="auto" Height="20" Margin="5" Orientation="Horizontal">
                 <materialDesign:PackIcon Kind="Notifications" Foreground="#FFEE2D2D" Margin="0,0,10,0" Height="20" Width="20"/>
                 <TextBlock x:Name="NotificationHeader" Text="Sample reminder here" FontSize="16" Foreground="#FF554F4F" />
             </StackPanel>
-            <StackPanel Width="230" Height="auto" Margin="5,0,5,5" >
+            <StackPanel Width="auto" Height="auto" Margin="5,0,5,5" >
                 <TextBlock x:Name="NotificationSubheader" Text="Sample reminder here you can type whatever you want here for the notification let's see how long does this notication can get" FontSize="12" Foreground="#FF554F4F" TextWrapping="Wrap"/>
             </StackPanel>
         </StackPanel>
