@@ -38,7 +38,6 @@ Class MainMenuPage
     End Sub
 
     Private Sub MainMenuPage_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
-
         If UserType = "Cashier" Then
             BTNManageAccounts.IsEnabled = False
             BTNLogs.IsEnabled = False
@@ -76,6 +75,21 @@ Class MainMenuPage
         End If
 
         LBLFormSubtitle.Text = "Welcome " & Usrnm
+
+        Dim reminderA As New ReminderItem
+        Dim reminderB As New ReminderItem
+        Dim reminderC As New ReminderItem
+        Dim reminderD As New ReminderItem
+        Dim reminderE As New ReminderItem
+        Dim reminderF As New ReminderItem
+        reminderE.NotificationHeader.Text = "Fuck you"
+        RemindWidget.ReminderContent.Children.Add(reminderA)
+        RemindWidget.ReminderContent.Children.Add(reminderB)
+        RemindWidget.ReminderContent.Children.Add(reminderC)
+        RemindWidget.ReminderContent.Children.Add(reminderD)
+        RemindWidget.ReminderContent.Children.Add(reminderE)
+        RemindWidget.ReminderContent.Children.Add(reminderF)
+
     End Sub
 
     Private Sub BTNPrintDailySalesReport_Click(sender As Object, e As RoutedEventArgs) Handles BTNPrintDailySalesReport.Click
