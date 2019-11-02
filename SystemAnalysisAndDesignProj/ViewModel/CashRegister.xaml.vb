@@ -100,6 +100,7 @@ Public Class CashRegister
                 .AddWithValue("@TenderAmount", tenderAmount)
                 .AddWithValue("@Change", change)
                 .AddWithValue("@toDeliver?", toDeliver)
+                .AddWithValue("@Qty", runningCount)
             End With
             command.ExecuteNonQuery()
             command.Dispose()

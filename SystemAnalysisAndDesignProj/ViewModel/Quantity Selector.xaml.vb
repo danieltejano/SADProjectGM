@@ -14,6 +14,8 @@ Public Class Quantity_Selector
     Public editingDataGrid As DataGrid
     Public previousQTY As Integer
     Public isFromEditButton As Boolean = False
+    Public productTemplate As ProductTemplate
+
     Private Sub Quantity_Selector_IsVisibleChanged(sender As Object, e As DependencyPropertyChangedEventArgs) Handles Me.IsVisibleChanged
         If e.NewValue = Visibility.Visible Then
             isSelectingQuantity = True
@@ -73,25 +75,21 @@ Public Class Quantity_Selector
                 Me.Visibility = Visibility.Hidden
                 cp.ShoppingCartTable.Items.Refresh()
                 UpdateStats()
+                productToAdd.UnitsAvailable -= productToAdd.Quantity
             Else
                 Integer.TryParse(FLDqty.Text, qtySetter)
                 productToAdd.Quantity = qtySetter
-                Dim doublePrice As Double = 0.00
-                Double.TryParse(productToAdd.ProductPrice, doublePrice)
-                doublePrice = qtySetter * doublePrice
-                runningTotal += doublePrice
-                totalManager.Text = "₱" + Format(runningTotal, "##,##0.00")
-                runningCount = runningCount + (1 * qtySetter)
-                totalCount.Text = runningCount
                 productDataTableGrid.Items.Add(productToAdd)
                 FLDqty.Text = ""
                 qtySetter = 0
                 Me.Visibility = Visibility.Hidden
                 cp.ShoppingCartTable.Items.Refresh()
                 UpdateStats()
+                productToAdd.UnitsAvailable -= productToAdd.Quantity
             End If
         End If
         FLDqty.Text = ""
+
     End Sub
 
     Private Sub addQuantityToItem(ByRef targetProduct As Product)
@@ -151,6 +149,7 @@ Public Class Quantity_Selector
     Private Sub FLDqty_PreviewKeyDown(sender As Object, e As KeyEventArgs) Handles FLDqty.PreviewKeyDown
         Dim x As String
         x = e.Key
+
         If x = Key.Back Or x = Key.Left Or x = Key.Right Then
             e.Handled = False
         ElseIf (Keyboard.IsKeyUp(Key.RightShift) And Keyboard.IsKeyUp(Key.LeftShift) And x >= Key.NumPad0 And x <= Key.NumPad9) Or (Keyboard.IsKeyUp(Key.RightShift) And Keyboard.IsKeyUp(Key.LeftShift) And x >= Key.D0 And x <= Key.D9) Then
@@ -178,6 +177,8 @@ Public Class Quantity_Selector
                 Me.Visibility = Visibility.Hidden
                 cp.ShoppingCartTable.Items.Refresh()
                 UpdateStats()
+                productToAdd.UnitsAvailable = productTemplate.startUpQuantity
+                productToAdd.UnitsAvailable -= productToAdd.Quantity
             ElseIf Not isEditing Then
                 If productDataTableGrid.Items.Contains(productToAdd) Then
 
@@ -193,6 +194,7 @@ Public Class Quantity_Selector
                         Me.Visibility = Visibility.Hidden
                         UpdateStats()
                         cp.ShoppingCartTable.Items.Refresh()
+                        productToAdd.UnitsAvailable -= productToAdd.Quantity
                     Next
                 ElseIf isFromEditButton Then
                     Integer.TryParse(FLDqty.Text, qtySetter)
@@ -204,28 +206,24 @@ Public Class Quantity_Selector
                     Me.Visibility = Visibility.Hidden
                     cp.ShoppingCartTable.Items.Refresh()
                     UpdateStats()
+                    productToAdd.UnitsAvailable -= productToAdd.Quantity
                 Else
                     Integer.TryParse(FLDqty.Text, qtySetter)
                     productToAdd.Quantity = qtySetter
-                    Dim doublePrice As Double = 0.00
-                    Double.TryParse(productToAdd.ProductPrice, doublePrice)
-                    doublePrice = qtySetter * doublePrice
-                    runningTotal += doublePrice
-                    totalManager.Text = "₱" + Format(runningTotal, "##,##0.00")
-                    runningCount = runningCount + (1 * qtySetter)
-                    totalCount.Text = runningCount
                     productDataTableGrid.Items.Add(productToAdd)
                     FLDqty.Text = ""
                     qtySetter = 0
                     Me.Visibility = Visibility.Hidden
                     cp.ShoppingCartTable.Items.Refresh()
                     UpdateStats()
+                    productToAdd.UnitsAvailable -= productToAdd.Quantity
                 End If
             End If
             FLDqty.Text = ""
         Else
             e.Handled = True
         End If
+
     End Sub
 
     Private Sub QTYClose_Click(sender As Object, e As RoutedEventArgs) Handles QTYClose.Click

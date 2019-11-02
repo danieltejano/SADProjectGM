@@ -7,6 +7,7 @@ Public Class ProductTemplate
     Public productDataTable As DataTable
     Public productDataTableGrid As DataGrid
     Public quantity As Integer
+    Public startUpQuantity As Integer
     Public totalManager As TextBlock
     Public totalCount As TextBlock
     Public qtyManager As Quantity_Selector
@@ -36,7 +37,7 @@ Public Class ProductTemplate
         qtyManager.Visibility = Visibility.Visible
         qtyManager.DataContext = qtyManager.productToAdd
         qtyManager.FLDqty.Focus()
-
+        qtyManager.productTemplate = Me
     End Sub
 
     Private Sub ProductTemplate_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
@@ -51,6 +52,6 @@ Public Class ProductTemplate
         Else
             PlayPopUp()
         End If
-
+        startUpQuantity = Product.UnitsAvailable
     End Sub
 End Class
