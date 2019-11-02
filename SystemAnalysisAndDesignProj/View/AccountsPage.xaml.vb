@@ -35,6 +35,8 @@ Class AccountsPage
 
     Private Sub AccountsPage_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
         PullDataFromDatabase(d:=GRDAccounts, tableName:="tblUsers")
+        GRDAccounts.Columns(0).Visibility = Visibility.Hidden
+        GRDAccounts.Columns(2).Visibility = Visibility.Hidden
         CBLoa.Items.Add("Administrator")                        'Adds "Administrator" a Combobox Item in the Level of Access (Loa) Combobox
         CBLoa.Items.Add("Cashier")                             'Adds "Cashiers" a ComboBox Item in the Level of Access (Loa) ComboBox
         Restrictions()
