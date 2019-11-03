@@ -99,6 +99,8 @@ Module General
         oleDatabaseConnection.Close()
     End Sub
 
+
+
     Public Sub RecordLog(ByVal accountID As String, ByVal loa As String, ByVal actionTaken As String)
         Using act As New OleDbConnection(connectionString)
             act.Open()

@@ -118,7 +118,18 @@
             <TextBlock x:Name="LBLFormSubtitle" Text="Welcome, Username" Margin="93,28.4,0,0"  Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="24" Grid.ColumnSpan="4" Foreground="#FF554F4F" Width="248" Height="52" TextAlignment="Center" Grid.RowSpan="2" />
             <Rectangle Grid.ColumnSpan="2" Grid.Column="5" Fill="White" HorizontalAlignment="Left" Height="18" Margin="128.667,28.833,0,0" Grid.Row="4" VerticalAlignment="Top" Width="114.333"/>
             <Label x:Name="LBLPending" Content="" Grid.Column="8" HorizontalAlignment="Left" Height="42" Margin="87.333,89.5,-144.993,0" Grid.Row="7" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="357.66" FontSize="22"/>
-            <local:RemindersWidget x:Name="RemindWidget" Grid.ColumnSpan="5" Grid.Column="4" HorizontalAlignment="Left" Height="385" Margin="10,10,0,0" Grid.Row="7" VerticalAlignment="Top" Width="370"/>
+            <TextBlock x:Name="LBLDeliveryQue_Copy"  Text="Reminders" Grid.Row="7" Grid.Column="5" FontSize="22" Foreground="#FF554F4F" Margin="10,25,71,418" Grid.ColumnSpan="2"/>
+            <Grid Margin="0,80,127,99" Grid.ColumnSpan="4" Grid.Row="7" Grid.Column="5">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <WrapPanel x:Name="RemindersContainer" Orientation="Horizontal">
+                        <WrapPanel.Resources>
+                            <Style TargetType="{x:Type local:ReminderItem}">
+                                <Setter Property="Margin" Value="5,10,5,10"/>
+                            </Style>
+                        </WrapPanel.Resources>
+                    </WrapPanel>
+                </ScrollViewer>
+            </Grid>
 
 
 

@@ -70,29 +70,13 @@
                     </TransformGroup>
                 </TextBlock.RenderTransform>
             </TextBlock>
-            <TextBlock x:Name="LBLProductDetails" Text="Property Editor" FontSize="32" Foreground="#FF554F4F" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2" Grid.Column="8" Margin="0,0,-110,0" Grid.Row="3" d:LayoutOverrides="VerticalAlignment" >
-                <TextBlock.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </TextBlock.RenderTransform>
-            </TextBlock>
+
             <WrapPanel Grid.Column="1" Grid.ColumnSpan="6" Height="334"  Grid.Row="7"  VerticalAlignment="center" HorizontalAlignment="Center" Width="576" Margin="27,31,3,56" Background="#FFECE9E9" >
                 <DataGrid x:Name="GRDInv" Height="333" Width="577" Opacity="100"/>
             </WrapPanel>
-            <Rectangle x:Name="rectangle" Grid.Column="8" Grid.ColumnSpan="2" Grid.Row="5" Grid.RowSpan="3" Width="416"  HorizontalAlignment="Left" Margin="0,0,-266,46" Fill="#FFECE9E9" />
+
             <StackPanel x:Name="STKBtn" HorizontalAlignment="Right" Height="55" Grid.Row="6" VerticalAlignment="Top" Width="159" Orientation="Horizontal" Margin="-9,-24,0,0" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2" Grid.Column="5" Grid.RowSpan="2" d:LayoutOverrides="VerticalAlignment">
-                <StackPanel.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </StackPanel.RenderTransform>
+
                 <Button x:Name="buttonAdd" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" ToolTip="MaterialDesignFloatingActionMiniAccentButton" Width="35" Height="35" Margin="10,0,10,0" Background="#FF2E2E2D" BorderBrush="{x:Null}">
                     <materialDesign:PackIcon Kind="AddCircleOutline" Height="25" Width="25" Foreground="#DDFFFFFF" />
                 </Button>
@@ -103,32 +87,35 @@
                     <materialDesign:PackIcon Kind="DeleteCircle" Height="25" Width="25" Foreground="#DDFFFFFF" />
                 </Button>
             </StackPanel>
-            <StackPanel x:Name="stklbl" HorizontalAlignment="Left" Margin="0,12,0,74" Grid.Row="5" Width="150" Grid.RowSpan="3" Grid.Column="8" Grid.ColumnSpan="2">
-                <Label x:Name="lblid" Content="Product ID" FontSize="17" FontWeight="Bold" Margin="10,15,0,20"/>
-                <Label x:Name="label1" Content="Product Name" FontSize="17" FontWeight="Bold" Margin="10,0,0,20"/>
-                <Label x:Name="label2" Content="Product Price" FontSize="17" FontWeight="Bold" Margin="10,0,0,20"/>
-                <Label x:Name="label3" Content="Tax Value" FontSize="17" FontWeight="Bold" Margin="10,0,0,20"/>
-                <Label x:Name="label4" Content="Unit Sold" FontSize="17" FontWeight="Bold" Margin="10,0,0,20"/>
-                <Label x:Name="label5" Content="Category" FontSize="17" FontWeight="Bold" Margin="10,0,0,20"/>
-                <Label x:Name="label6" Content="Units Available" FontSize="17" FontWeight="Bold" Margin="10,0,0,20"/>
-                <Label x:Name="label7" Content="Supplier ID" FontWeight="Bold" FontSize="17" Margin="10,0,0,20"/>
-            </StackPanel>
-            <StackPanel x:Name="stktxt" HorizontalAlignment="Left" Margin="40,17,-265,5" Width="266" Grid.Column="9" Grid.Row="5" Grid.RowSpan="3">
-                <TextBox x:Name="FLDPid" Height="30" TextWrapping="Wrap" FontSize="14" Margin="10,5,20,20" Foreground="Black" materialDesign:HintAssist.Hint = "Product ID">
-                    <TextBox.Effect>
-                        <DropShadowEffect Opacity="0.4"/>
-                    </TextBox.Effect>
-                </TextBox>
-                <TextBox x:Name="FLDPName" Height="30" TextWrapping="Wrap" FontSize="14" Margin="10,0,20,20" Foreground="Black" materialDesign:HintAssist.Hint = "Product Name"/>
-                <TextBox x:Name="FLDPrc" Height="30" TextWrapping="Wrap" FontSize="14" Margin="10,0,20,20" Foreground="Black" materialDesign:HintAssist.Hint = "Product Price"/>
-                <TextBox x:Name="FLDTv" Height="30" TextWrapping="Wrap" FontSize="14" Margin="10,0,20,20" Foreground="Black" />
-                <TextBox x:Name="FLDUs" Height="30" TextWrapping="Wrap" FontSize="14" Margin="10,0,20,20" Foreground="Black" />
-                <TextBox x:Name="FLDCat" TextWrapping="Wrap" FontSize="14" Margin="10,0,20,20" Foreground="Black" Height="30" materialDesign:HintAssist.Hint = "Category"/>
-                <TextBox x:Name="FLDUa" TextWrapping="Wrap" FontSize="14" Margin="10,0,20,20" Foreground="Black" Height="30" materialDesign:HintAssist.Hint = "Units Available"/>
-                <TextBox x:Name="FLDSi" TextWrapping="Wrap" FontSize="14" Margin="10,0,20,20" Foreground="Black" Height="30" materialDesign:HintAssist.Hint = "Supplier ID"/>
-            </StackPanel>
-            <Button x:Name="buttonSave" Content="SAVE" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Grid.Column="9" Margin="50,333,-110,0" Grid.Row="7"/>
-            <Button x:Name="buttonCancel" Content="CANCEL" VerticalAlignment="Top" Grid.Column="9" Margin="179,333,-239,0" Grid.Row="7" HorizontalAlignment="Left" Width="100"/>
+            <Grid Grid.ColumnSpan="3" Margin="140,0,-283,122.8" Grid.RowSpan="5" Grid.Column="7" Grid.Row="3">
+                <TextBlock x:Name="LBLProductDetails" Text="Property Editor" FontSize="32" Foreground="#FF554F4F" RenderTransformOrigin="0.5,0.5" Margin="0,-6,0,-53.8" HorizontalAlignment="Left" Width="446" />
+                <StackPanel x:Name="stklbl" HorizontalAlignment="Left" Margin="10,37,0,49.2" Width="150">
+                    <Label x:Name="lblid" Content="Product ID" FontSize="17" FontWeight="Bold" Margin="10,15,0,20"/>
+                    <Label x:Name="label1" Content="Product Name" FontSize="17" FontWeight="Bold" Margin="10,0,0,20"/>
+                    <Label x:Name="label2" Content="Product Price" FontSize="17" FontWeight="Bold" Margin="10,0,0,20"/>
+                    <Label x:Name="label3" Content="Tax Value" FontSize="17" FontWeight="Bold" Margin="10,0,0,20"/>
+                    <Label x:Name="label4" Content="Unit Sold" FontSize="17" FontWeight="Bold" Margin="10,0,0,20"/>
+                    <Label x:Name="label5" Content="Category" FontSize="17" FontWeight="Bold" Margin="10,0,0,20"/>
+                    <Label x:Name="label6" Content="Units Available" FontSize="17" FontWeight="Bold" Margin="10,0,0,20"/>
+                    <Label x:Name="label7" Content="Supplier ID" FontWeight="Bold" FontSize="17" Margin="10,0,0,20"/>
+                </StackPanel>
+                <StackPanel x:Name="stktxt" HorizontalAlignment="Left" Margin="179,44,0,-21.8" Width="266">
+                    <TextBox x:Name="FLDPid" Height="30" TextWrapping="Wrap" FontSize="14" Margin="10,5,20,20" Foreground="Black" materialDesign:HintAssist.Hint = "Product ID">
+                        <TextBox.Effect>
+                            <DropShadowEffect Opacity="0.4"/>
+                        </TextBox.Effect>
+                    </TextBox>
+                    <TextBox x:Name="FLDPName" Height="30" TextWrapping="Wrap" FontSize="14" Margin="10,0,20,20" Foreground="Black" materialDesign:HintAssist.Hint = "Product Name"/>
+                    <TextBox x:Name="FLDPrc" Height="30" TextWrapping="Wrap" FontSize="14" Margin="10,0,20,20" Foreground="Black" materialDesign:HintAssist.Hint = "Product Price"/>
+                    <TextBox x:Name="FLDTv" Height="30" TextWrapping="Wrap" FontSize="14" Margin="10,0,20,20" Foreground="Black" />
+                    <TextBox x:Name="FLDUs" Height="30" TextWrapping="Wrap" FontSize="14" Margin="10,0,20,20" Foreground="Black" />
+                    <TextBox x:Name="FLDCat" TextWrapping="Wrap" FontSize="14" Margin="10,0,20,20" Foreground="Black" Height="30" materialDesign:HintAssist.Hint = "Category"/>
+                    <TextBox x:Name="FLDUa" TextWrapping="Wrap" FontSize="14" Margin="10,0,20,20" Foreground="Black" Height="30" materialDesign:HintAssist.Hint = "Units Available"/>
+                    <TextBox x:Name="FLDSi" TextWrapping="Wrap" FontSize="14" Margin="10,0,20,20" Foreground="Black" Height="30" materialDesign:HintAssist.Hint = "Supplier ID"/>
+                </StackPanel>
+                <Button x:Name="buttonSave" Content="SAVE" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="179,511,0,-41.8"/>
+                <Button x:Name="buttonCancel" Content="CANCEL" VerticalAlignment="Top" Margin="324,511,0,-41.8" HorizontalAlignment="Left" Width="100"/>
+            </Grid>
             <Button x:Name="BTNAddStocks" Content="AddStocks" Grid.Column="2" HorizontalAlignment="Left" Margin="82,18,0,0" Grid.Row="5" VerticalAlignment="Top" Width="102" Grid.ColumnSpan="3"/>
             <Button x:Name="btnplus" Content="+" Grid.Column="5" HorizontalAlignment="Left" Margin="44,18,0,0" Grid.Row="5" VerticalAlignment="Top" Width="42"/>
             <Button x:Name="btnminus" Content="–" Grid.Column="4" Margin="102,18,7,0" Grid.Row="5" VerticalAlignment="Top" Height="32"/>

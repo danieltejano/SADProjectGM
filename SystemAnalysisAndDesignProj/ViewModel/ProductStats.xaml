@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="ProductStats"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SystemAnalysisAndDesignProj"
+              xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             mc:Ignorable="d" 
+             d:DesignHeight="570" d:DesignWidth="300" Background="White">
+    <StackPanel>
+        <StackPanel Height="150">
+            <lvc:CartesianChart  Series="{Binding MySeriesCollection}"  LegendLocation="Right" Height="150">
+                <lvc:CartesianChart.AxisX>
+                    <lvc:Axis Title="Year" LabelFormatter="{Binding XFormatter}"></lvc:Axis>
+                </lvc:CartesianChart.AxisX>
+                <lvc:CartesianChart.AxisY>
+                    <lvc:Axis Title="Population" LabelFormatter="{Binding YFormatter}"></lvc:Axis>
+                </lvc:CartesianChart.AxisY>
+            </lvc:CartesianChart>
+        </StackPanel>
+        <StackPanel Margin="0,20,0,20" Height="375">
+            <DataGrid x:Name="productSalesTable" Height="375"/>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

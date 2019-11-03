@@ -1,6 +1,6 @@
 ﻿Imports System.Data
 Imports System.Data.OleDb
-
+Imports System.Windows.Media
 Class MainMenuPage
     Dim log_values As Char
     Dim DB As New ADODB.Connection
@@ -75,20 +75,34 @@ Class MainMenuPage
         End If
 
         LBLFormSubtitle.Text = "Welcome " & Usrnm
+        CheckInventory()
 
-        Dim reminderA As New ReminderItem
-        Dim reminderB As New ReminderItem
-        Dim reminderC As New ReminderItem
-        Dim reminderD As New ReminderItem
-        Dim reminderE As New ReminderItem
-        Dim reminderF As New ReminderItem
-        reminderE.NotificationHeader.Text = "Fuck you"
-        RemindWidget.ReminderContent.Children.Add(reminderA)
-        RemindWidget.ReminderContent.Children.Add(reminderB)
-        RemindWidget.ReminderContent.Children.Add(reminderC)
-        RemindWidget.ReminderContent.Children.Add(reminderD)
-        RemindWidget.ReminderContent.Children.Add(reminderE)
-        RemindWidget.ReminderContent.Children.Add(reminderF)
+    End Sub
+
+    Private Sub CheckInventory()
+        RemindersContainer.Children.Clear()
+        Dim oleDatabaseConnection As New OleDb.OleDbConnection(connectionString)
+        oleDatabaseConnection.Open()
+        Dim databasez As New OleDbCommand
+        databasez.CommandText = "SELECT * FROM Product WHERE (((Product.[UnitsAvailable])<=10)) order by UnitsAvailable ASC"
+        databasez.Connection = oleDatabaseConnection
+        Using databaseActualTable As OleDbDataReader = databasez.ExecuteReader()
+            While databaseActualTable.Read()
+                Dim a As New ReminderItem
+                If databaseActualTable.GetValue(5) = 0 Then
+                    a.NotificationHeader.Text = "Product Depleted"
+                    a.NotificationSubheader.Text = databaseActualTable.GetValue(1) & " has been depleted " & " please consider to restock within the week"
+                    RemindersContainer.Children.Add(a)
+                Else
+                    a.NotificationHeader.Text = "Product nearly Depleted"
+                    a.NotificationIcon.Foreground = New SolidColorBrush(ColorConverter.ConvertFromString("#FFEED42D"))
+                    a.NotificationSubheader.Text = databaseActualTable.GetValue(1) & " is nearly depleted " & " with " & databaseActualTable.GetValue(5) & " stocks available please consider to restock within the week"
+                    RemindersContainer.Children.Add(a)
+                End If
+
+            End While
+        End Using
+
 
     End Sub
 

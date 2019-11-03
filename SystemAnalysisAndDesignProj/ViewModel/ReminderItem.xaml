@@ -17,7 +17,7 @@
     <Grid Background="White">
         <StackPanel>
             <StackPanel Width="auto" Height="20" Margin="5" Orientation="Horizontal">
-                <materialDesign:PackIcon Kind="Notifications" Foreground="#FFEE2D2D" Margin="0,0,10,0" Height="20" Width="20"/>
+                <materialDesign:PackIcon x:Name="NotificationIcon" Kind="Notifications" Foreground="#FFEE2D2D" Margin="0,0,10,0" Height="20" Width="20"/>
                 <TextBlock x:Name="NotificationHeader" Text="Sample reminder here" FontSize="16" Foreground="#FF554F4F" />
             </StackPanel>
             <StackPanel Width="auto" Height="auto" Margin="10,5,10,5" >
