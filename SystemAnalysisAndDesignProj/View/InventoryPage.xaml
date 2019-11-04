@@ -60,7 +60,7 @@
                     </TransformGroup>
                 </TextBlock.RenderTransform>
             </TextBlock>
-            <TextBlock x:Name="LBLSearch" Text="Products" Grid.Row="4" FontSize="24" Foreground="#FF554F4F" Margin="25,5,-3,0" RenderTransformOrigin="0.5,0.5" Grid.Column="1" >
+            <TextBlock x:Name="LBLSearch" Text="Products" Grid.Row="3" FontSize="24" Foreground="#FF554F4F" Margin="26,52,107,110" RenderTransformOrigin="0.5,0.5" Grid.Column="1" Grid.ColumnSpan="2" >
                 <TextBlock.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -71,11 +71,11 @@
                 </TextBlock.RenderTransform>
             </TextBlock>
 
-            <WrapPanel Grid.Column="1" Grid.ColumnSpan="6" Height="334"  Grid.Row="7"  VerticalAlignment="center" HorizontalAlignment="Center" Width="576" Margin="27,31,3,56" Background="#FFECE9E9" >
-                <DataGrid x:Name="GRDInv" Height="333" Width="577" Opacity="100"/>
+            <WrapPanel Grid.Column="1" Grid.ColumnSpan="7" Height="334"  Grid.Row="3"  VerticalAlignment="center" HorizontalAlignment="Center" Width="647"  Background="#FFECE9E9" Margin="29,191,81,99" Grid.RowSpan="3" >
+                <DataGrid x:Name="GRDInv" Height="333" Width="646" Opacity="100"/>
             </WrapPanel>
 
-            <StackPanel x:Name="STKBtn" HorizontalAlignment="Right" Height="55" Grid.Row="6" VerticalAlignment="Top" Width="159" Orientation="Horizontal" Margin="-9,-24,0,0" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2" Grid.Column="5" Grid.RowSpan="2" d:LayoutOverrides="VerticalAlignment">
+            <StackPanel x:Name="STKBtn" HorizontalAlignment="Right" Height="55" Grid.Row="3" VerticalAlignment="Top" Width="159" Orientation="Horizontal" Margin="0,136,84,0" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="3" Grid.Column="5">
 
                 <Button x:Name="buttonAdd" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" ToolTip="MaterialDesignFloatingActionMiniAccentButton" Width="35" Height="35" Margin="10,0,10,0" Background="#FF2E2E2D" BorderBrush="{x:Null}">
                     <materialDesign:PackIcon Kind="AddCircleOutline" Height="25" Width="25" Foreground="#DDFFFFFF" />
@@ -116,18 +116,20 @@
                 <Button x:Name="buttonSave" Content="SAVE" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="179,511,0,-41.8"/>
                 <Button x:Name="buttonCancel" Content="CANCEL" VerticalAlignment="Top" Margin="324,511,0,-41.8" HorizontalAlignment="Left" Width="100"/>
             </Grid>
-            <Button x:Name="BTNAddStocks" Content="AddStocks" Grid.Column="2" HorizontalAlignment="Left" Margin="82,18,0,0" Grid.Row="5" VerticalAlignment="Top" Width="102" Grid.ColumnSpan="3"/>
-            <Button x:Name="btnplus" Content="+" Grid.Column="5" HorizontalAlignment="Left" Margin="44,18,0,0" Grid.Row="5" VerticalAlignment="Top" Width="42"/>
-            <Button x:Name="btnminus" Content="–" Grid.Column="4" Margin="102,18,7,0" Grid.Row="5" VerticalAlignment="Top" Height="32"/>
-            <ComboBox x:Name="CMBCategory" HorizontalAlignment="Left" Margin="2,66,0,0" VerticalAlignment="Top" Width="120" Foreground="#FF474747" Grid.Column="4" Grid.Row="5" materialDesign:HintAssist.Hint="Categories" Grid.RowSpan="3" Height="28" />
-            <TextBox x:Name="SearchTextBox" HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" VerticalAlignment="Top" Width="259" Margin="25,-17.2,0,-10.8" CaretBrush="#FF616161" Foreground="#FF686868" materialDesign:HintAssist.Hint="Search by Product" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="6"/>
-            <Button x:Name="btnplus_10" Content="+10" Grid.Column="5" HorizontalAlignment="Left" Margin="91,18,0,0" Grid.Row="5" VerticalAlignment="Top" Width="59" Grid.ColumnSpan="2"/>
-            <Button x:Name="btnminus_10" Content="–10" Grid.Column="4" HorizontalAlignment="Left" Margin="39,18,0,0" Grid.Row="5" VerticalAlignment="Top" Width="58" Height="32"/>
-            <TextBox x:Name="FLDadd" TextWrapping="Wrap" FontSize="14" Margin="0,19,79,34" TextAlignment="Center" Foreground="Black" Grid.Column="5" Grid.Row="5">
+            <Button x:Name="BTNAddStocks" Content="AddStocks" Grid.Column="4" HorizontalAlignment="Left" Margin="7,99,0,0" Grid.Row="3" VerticalAlignment="Top" Width="102"/>
+            <Button x:Name="btnplus" Content="+" Grid.Column="6" HorizontalAlignment="Left" Margin="5,99,0,0" Grid.Row="3" VerticalAlignment="Top" Width="42" Grid.ColumnSpan="2"/>
+            <Button x:Name="btnminus" Content="–" Grid.Column="5" Margin="27,99,42,0" Grid.Row="3" VerticalAlignment="Top" Height="32"/>
+            <ComboBox x:Name="CMBCategory" HorizontalAlignment="Left" Margin="66,149,0,0" VerticalAlignment="Top" Width="120" Foreground="#FF474747" Grid.Column="4" Grid.Row="3" materialDesign:HintAssist.Hint="Categories" Height="28" Grid.ColumnSpan="2" />
+            <TextBox x:Name="SearchTextBox" HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" VerticalAlignment="Top" Width="259" Margin="26,149,0,0" CaretBrush="#FF616161" Foreground="#FF686868" materialDesign:HintAssist.Hint="Search by Product" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="3"/>
+            <Button x:Name="btnplus_10" Content="+10" Grid.Column="7" HorizontalAlignment="Left" Margin="11,99,0,0" Grid.Row="3" VerticalAlignment="Top" Width="59"/>
+            <Button x:Name="btnminus_10" Content="–10" Grid.Column="4" HorizontalAlignment="Left" Margin="114,99,0,0" Grid.Row="3" VerticalAlignment="Top" Width="58" Height="32" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="FLDadd" TextWrapping="Wrap" FontSize="14" Margin="79,67,0,64" TextAlignment="Center" Foreground="Black" Grid.Column="5" Grid.Row="3">
                 <TextBox.Effect>
                     <DropShadowEffect Opacity="0.4"/>
                 </TextBox.Effect>
             </TextBox>
+            <local:ProductStats x:Name="stats" Grid.Row="2" Grid.Column="7" Grid.ColumnSpan="3" Margin="75,22,-239,84" Grid.RowSpan="4"  />
+
         </Grid>
     </Grid>
 </Page>

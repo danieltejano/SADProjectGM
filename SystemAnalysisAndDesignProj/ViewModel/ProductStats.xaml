@@ -4,12 +4,24 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SystemAnalysisAndDesignProj"
-              xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              mc:Ignorable="d" 
-             d:DesignHeight="570" d:DesignWidth="300" Background="White">
+             d:DesignHeight="570" d:DesignWidth="470" Background="White" Width="470"
+              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      TextElement.FontWeight="Regular"
+      TextElement.FontSize="13"
+      TextOptions.TextFormattingMode="Ideal"
+      TextOptions.TextRenderingMode="Auto"
+      FontFamily="{DynamicResource MaterialDesignFont}" Foreground="{x:Null}">
+
     <StackPanel>
-        <StackPanel Height="150">
-            <lvc:CartesianChart  Series="{Binding MySeriesCollection}"  LegendLocation="Right" Height="150">
+        <StackPanel Height="40">
+            <Button x:Name="Close" Margin="416,5,5,0" HorizontalAlignment="Center" Width="49" Height="30" HorizontalContentAlignment="Center" VerticalAlignment="Center">
+                <materialDesign:PackIcon Kind="Close"/>
+            </Button>
+        </StackPanel>
+        <StackPanel Height="210">
+            <lvc:CartesianChart x:Name="productChart" Series="{Binding MySeriesCollection}"  LegendLocation="Right" Height="250">
                 <lvc:CartesianChart.AxisX>
                     <lvc:Axis Title="Year" LabelFormatter="{Binding XFormatter}"></lvc:Axis>
                 </lvc:CartesianChart.AxisX>
@@ -18,8 +30,8 @@
                 </lvc:CartesianChart.AxisY>
             </lvc:CartesianChart>
         </StackPanel>
-        <StackPanel Margin="0,20,0,20" Height="375">
-            <DataGrid x:Name="productSalesTable" Height="375"/>
+        <StackPanel Margin="0,20,0,20" Height="auto">
+            <DataGrid x:Name="productSalesTable" Height="275"/>
         </StackPanel>
     </StackPanel>
 </UserControl>

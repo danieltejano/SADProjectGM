@@ -531,7 +531,12 @@ Class InventoryPage
 
     End Sub
 
-
-
 #End Region
+    Private Sub GRDInv_MouseDoubleClick(sender As Object, e As MouseButtonEventArgs) Handles GRDInv.MouseDoubleClick
+        Dim selectedRowIndex = GRDInv.SelectedIndex
+        stats.Visibility = Visibility.Visible
+        Dim prodID = TryCast(GRDInv.Columns(0).GetCellContent(GRDInv.Items(selectedRowIndex)), TextBlock).Text
+        stats.ReloadStats(prodID)
+
+    End Sub
 End Class

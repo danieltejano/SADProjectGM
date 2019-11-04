@@ -1,12 +1,15 @@
-﻿<Window 
-     x:Class="Mycolumn"
+﻿<Window
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
-             mc:Ignorable="d" Height="379.799" Width="642.001">
+             xmlns:local="clr-namespace:SystemAnalysisAndDesignProj" 
+               x:Class="Mycolumn"
+             mc:Ignorable="d" Height="884.16" Width="642.001">
     <Grid>
-       
+
+        <local:ProductStats HorizontalAlignment="Left" Height="712" VerticalAlignment="Top" Width="500" Margin="69,87,0,0"/>
+
     </Grid>
 </Window>
