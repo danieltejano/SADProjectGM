@@ -80,7 +80,6 @@ Class InventoryPage
             Dim us As TextBlock = TryCast(GRDInv.Columns(4).GetCellContent(GRDInv.Items(selectedRowIndex)), TextBlock)
             Dim cat As TextBlock = TryCast(GRDInv.Columns(5).GetCellContent(GRDInv.Items(selectedRowIndex)), TextBlock)
             Dim ua As TextBlock = TryCast(GRDInv.Columns(6).GetCellContent(GRDInv.Items(selectedRowIndex)), TextBlock)
-            Dim si As TextBlock = TryCast(GRDInv.Columns(7).GetCellContent(GRDInv.Items(selectedRowIndex)), TextBlock)
             FLDPid.Text = pid.Text
             FLDPName.Text = pnm.Text
             Dim A As New ADODB.Connection
