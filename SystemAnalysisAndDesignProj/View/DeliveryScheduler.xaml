@@ -80,7 +80,7 @@
             <Button x:Name="buttonCancel" Content="CANCEL" VerticalAlignment="Top" Grid.Column="9" Margin="0,362,-59,0" Grid.Row="7" HorizontalAlignment="Left" Width="100"/>
             <ComboBox x:Name="CMBCategory" HorizontalAlignment="Left" Margin="0,65.1,0,0" VerticalAlignment="Top" Width="120" Foreground="#FF474747" Grid.Column="4" Grid.Row="5" materialDesign:HintAssist.Hint="Delivery Status" Grid.RowSpan="3" />
             <TextBox x:Name="SearchTextBox" HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" VerticalAlignment="Top" Width="265.5" Margin="24.5,65.1,0,0" CaretBrush="#FF616161" Foreground="#FF686868" materialDesign:HintAssist.Hint="Search by Customer Name" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="5" Grid.RowSpan="3"/>
-            <Button x:Name="buttonCancelled" Content="CANCELLED" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Grid.Column="4" Margin="9,5,0,0" Grid.Row="5" RenderTransformOrigin="0.59,2.359"/>
+            <Button x:Name="buttonCancelled" Content="CANCEL" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Grid.Column="4" Margin="9,5,0,0" Grid.Row="5" RenderTransformOrigin="0.59,2.359"/>
             <Button x:Name="buttonDelivered" Content="DELIVERED" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Grid.Column="4" Margin="124,5,0,0" Grid.Row="5" RenderTransformOrigin="0.59,2.359" Grid.ColumnSpan="2"/>
             <Label x:Name="label7_Copy" Content="Delivery Status" FontSize="17" FontWeight="Bold" Margin="10,0,87,0" Grid.ColumnSpan="2" Grid.Row="4" Grid.Column="4"/>
         </Grid>

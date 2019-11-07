@@ -42,8 +42,8 @@
             </Grid.RowDefinitions>
             <TextBlock x:Name="LBLFormTitle" Text="Sales" Grid.Column="1"  Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="36" TextWrapping="NoWrap" Grid.ColumnSpan="3" Foreground="#FF554F4F" Margin="68.667,0,0,0" FontWeight="ExtraBold" Width="235"/>
             <TextBlock x:Name="LBLFormSubtitle" Text="Form Subtitle" Grid.Column="1"  Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="18" Grid.ColumnSpan="4" Foreground="#FF554F4F" TextWrapping="Wrap" Width="300" Height="67" Grid.RowSpan="2" Margin="69.106,0,0,0" />
+            <Button x:Name="BTN" Content="Old Sales" Grid.Column="9" HorizontalAlignment="Left" Margin="179,22,-240,0" Grid.Row="2" VerticalAlignment="Top" Width="102" Grid.RowSpan="2"/>
             <DataGrid x:Name="GRDSales" Width="1080" Height="480" Grid.ColumnSpan="9" Grid.Column="1" Margin="69,29,-240,-381" Grid.Row="3" Grid.RowSpan="5" HorizontalAlignment="Center" HorizontalContentAlignment="Right"/>
-
         </Grid>
         <materialDesign:PackIcon Kind="Archive" Height="43.106" Width="43.106"  Foreground="#FF1B1B1B" VerticalAlignment="Center" HorizontalAlignment="right" Margin="0,41.4,994.894,565.494"/>
     </Grid>
