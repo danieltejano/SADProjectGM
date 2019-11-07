@@ -326,7 +326,7 @@ Public Class CustomerPage
             GRDDMan.ItemsSource = databaseActualTable
             GRDDMan.Items.Refresh()
         ElseIf CMBCategory.SelectedIndex = 1 Then
-            databasez.CommandText = "Select *  From Customer Where LastName Like '" & SearchTextBox.Text & "%'"
+            databasez.CommandText = "Select *  From Customer Where LastName Like '%" & SearchTextBox.Text & "%'"
             databasez.Connection = oleDatabaseConnection
             Dim databaseActualTable As OleDbDataReader = databasez.ExecuteReader()
             GRDDMan.ItemsSource = databaseActualTable

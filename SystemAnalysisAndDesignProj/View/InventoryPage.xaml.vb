@@ -53,7 +53,7 @@ Class InventoryPage
         Restrictions()
         STKBtn.IsEnabled = True
         CMBCategory.Items.Clear()
-        CMBCategory.Items.Add("")
+        CMBCategory.Items.Add("All")
         CMBCategory.Items.Add("Bed")
         CMBCategory.Items.Add("Cabinet")
         CMBCategory.Items.Add("Dining Chair")
@@ -471,7 +471,7 @@ Class InventoryPage
         Dim oleDatabaseConnection As New OleDb.OleDbConnection(connectionString)
         oleDatabaseConnection.Open()
         Dim databasez As New OleDbCommand
-        databasez.CommandText = "Select *  From Product Where ProductName Like '" & SearchTextBox.Text & "%'"
+        databasez.CommandText = "Select *  From Product Where ProductName Like '%" & SearchTextBox.Text & "%'"
         databasez.Connection = oleDatabaseConnection
         Dim databaseActualTable As OleDbDataReader = databasez.ExecuteReader()
         GRDInv.ItemsSource = databaseActualTable

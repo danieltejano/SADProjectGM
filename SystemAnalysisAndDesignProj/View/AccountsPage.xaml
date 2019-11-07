@@ -81,7 +81,7 @@
                 </TextBlock.RenderTransform>
             </TextBlock>
             <WrapPanel Grid.Column="1" Grid.ColumnSpan="6" Height="334"  Grid.Row="7"  VerticalAlignment="center" HorizontalAlignment="Center" Width="600" Margin="0,31,0,56" Background="#FFECE9E9" >
-                <DataGrid x:Name="GRDAccounts" Height="334" Width="605"/>
+                <DataGrid x:Name="GRDAccounts" Height="334" Width="605" CanUserResizeColumns="False"/>
             </WrapPanel>
             <Rectangle x:Name="rectangle" Grid.Column="8" Grid.ColumnSpan="2" Grid.Row="5" Grid.RowSpan="3" Width="446.5"  HorizontalAlignment="Left" Margin="0,0,-296.5,56" Fill="#FFECE9E9" />
             <StackPanel x:Name="STKBtn" HorizontalAlignment="Right" Height="54.8" Grid.Row="6" VerticalAlignment="Top" Width="159.333" Orientation="Horizontal" Margin="-5,0,-4.333,-26" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2" Grid.Column="5">
@@ -93,13 +93,13 @@
                         <TranslateTransform/>
                     </TransformGroup>
                 </StackPanel.RenderTransform>
-                <Button x:Name="buttonAdd" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" ToolTip="MaterialDesignFloatingActionMiniAccentButton" Width="35" Height="35" Margin="10,0,10,0" Background="#FF2E2E2D" BorderBrush="{x:Null}">
+                <Button x:Name="buttonAdd" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" ToolTip="Add" Width="35" Height="35" Margin="10,0,10,0" Background="#FF2E2E2D" BorderBrush="{x:Null}">
                     <materialDesign:PackIcon Kind="AccountsAddOutline" Height="25" Width="25" Foreground="#DDFFFFFF" />
                 </Button>
-                <Button x:Name="buttonEdit" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" ToolTip="MaterialDesignFloatingActionMiniAccentButton" Width="35" Height="35" Margin="10,0,10,0" Background="#FF2E2E2D" BorderBrush="{x:Null}">
+                <Button x:Name="buttonEdit" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" ToolTip="Edit" Width="35" Height="35" Margin="10,0,10,0" Background="#FF2E2E2D" BorderBrush="{x:Null}">
                     <materialDesign:PackIcon Kind="ModeEdit" Height="20" Width="20" Foreground="#DDFFFFFF" />
                 </Button>
-                <Button x:Name="buttonDelete" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" ToolTip="MaterialDesignFloatingActionMiniAccentButton" Width="35" Height="35" Margin="10,0,10,0" Background="#FF2E2E2D" BorderBrush="{x:Null}">
+                <Button x:Name="buttonDelete" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" ToolTip="Delete" Width="35" Height="35" Margin="10,0,10,0" Background="#FF2E2E2D" BorderBrush="{x:Null}">
                     <materialDesign:PackIcon Kind="TrashCanCircle" Height="25" Width="25" Foreground="#DDFFFFFF" />
                 </Button>
             </StackPanel>
