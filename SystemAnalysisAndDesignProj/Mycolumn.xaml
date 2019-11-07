@@ -7,9 +7,20 @@
              xmlns:local="clr-namespace:SystemAnalysisAndDesignProj" 
                x:Class="Mycolumn"
              mc:Ignorable="d" Height="884.16" Width="642.001">
-    <Grid>
-
-        <local:ProductStats HorizontalAlignment="Left" Height="712" VerticalAlignment="Top" Width="500" Margin="69,87,0,0"/>
-
+     <Grid>
+        <lvc:CartesianChart Name="Mychart" Series="{Binding MySeriesCollection}" LegendLocation="Left" Margin="25,29,32,468">
+            <lvc:CartesianChart.AxisX>
+                <lvc:Axis Title="Size" Labels="{Binding MyLabels}">
+                    <lvc:Axis.Separator>
+                        <lvc:Separator IsEnabled="False" Step="1"></lvc:Separator>
+                    </lvc:Axis.Separator>
+                </lvc:Axis>
+            </lvc:CartesianChart.AxisX> 
+            <lvc:CartesianChart.AxisY>
+                <lvc:Axis Title="Frequency" LabelFormatter="{Binding MyFormatter}"></lvc:Axis>
+            </lvc:CartesianChart.AxisY>
+        </lvc:CartesianChart>
+        <Button x:Name="ClearData" Content="Clear Data" HorizontalAlignment="Left" Margin="25,408,0,0" VerticalAlignment="Top" Width="101" Height="33"/>
+        <Button x:Name="ReloadData" Content="Reload Data" HorizontalAlignment="Left" Margin="151,408,0,0" VerticalAlignment="Top" Width="119" Height="33"/>
     </Grid>
 </Window>

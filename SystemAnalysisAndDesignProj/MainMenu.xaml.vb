@@ -26,7 +26,7 @@ Public Class MainMenu
         B.Open("SELECT * FROM Product WHERE (((Product.[UnitsAvailable])<=10))", A, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic)
         Dim numberofLowStocks = B.RecordCount
         If numberofLowStocks > 0 Then
-            Notify("Low Product Stocks", "Currently you have " & numberofLowStocks & " Products that are out of stock, please reconsider to restock products.")
+            Notify("Low Product Stocks", "Currently you have " & numberofLowStocks & " Products that are low on stocks, please reconsider to restock products.")
         End If
     End Sub
 

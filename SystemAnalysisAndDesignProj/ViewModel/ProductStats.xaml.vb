@@ -5,7 +5,7 @@ Imports LiveCharts.Defaults
 Imports LiveCharts.Wpf
 
 Public Class ProductStats
-    Public Property MySeriesCollection As New LiveCharts.SeriesCollection
+    Public Property MySeriesCollection As LiveCharts.SeriesCollection
     Public Property MyLabels As New List(Of String)
     Public Property XFormatter As Func(Of Double, String)
     Public Property YFormatter As Func(Of Double, String)
@@ -18,20 +18,20 @@ Public Class ProductStats
 
 
     Public Sub ReloadStats(ByVal productID As String)
-        InitializeComponent()
         productData.Clear()
-        MySeriesCollection.Clear()
+
         Me.productID = productID
         InitializeDataGrid()
         InitializeProductData()
 
-
-        MySeriesCollection.Add(
-                New LineSeries With {
-                    .Title = "Product Name",
-                    .Values = New ChartValues(Of DateTimePoint)(productData)
+        MySeriesCollection = New LiveCharts.SeriesCollection From {
+                New LiveCharts.Wpf.ColumnSeries With {
+                    .Title = productID,
+                    .Values = New LiveCharts.ChartValues(Of DateTimePoint)(productData)
                     }
-        )
+        }
+
+
 
         '---Add a second columnseries(index 1) with nothing in it yet--- 
         '---Define formatter to change double values on y-axis to string labels---
