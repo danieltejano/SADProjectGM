@@ -157,6 +157,9 @@
     <Compile Include="ViewModel\CashRegister.xaml.vb">
       <DependentUpon>CashRegister.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\InventoryNotes.xaml.vb">
+      <DependentUpon>InventoryNotes.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\MainMenuViewModel.vb" />
     <Compile Include="ViewModel\ProductStats.xaml.vb">
       <DependentUpon>ProductStats.xaml</DependentUpon>
@@ -248,6 +251,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ViewModel\CashRegister.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewModel\InventoryNotes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

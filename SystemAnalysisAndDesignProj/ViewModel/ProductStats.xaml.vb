@@ -16,28 +16,53 @@ Public Class ProductStats
 
     Public productID As String
 
+    Public Sub New()
+        InitializeComponent()
+        '---Create a seriescollection and add first series as a columnseries (index 0) and some static values to show---
+        '---The first series will show just 4 columns---
+        MySeriesCollection = New LiveCharts.SeriesCollection From {
+                New LiveCharts.Wpf.ColumnSeries With {.Values = New LiveCharts.ChartValues(Of Double) From {
+                        110,
+                        350,
+                        239,
+                        550
+                    }
+                }
+            }
+
+
+        DataContext = Me
+    End Sub
+
 
     Public Sub ReloadStats(ByVal productID As String)
         productData.Clear()
-
+        MySeriesCollection.Clear()
+        MyLabels.Clear()
+        productDataTable.Clear()
         Me.productID = productID
         InitializeDataGrid()
-        InitializeProductData()
+        If productDataTable.Rows.Count = 0 Then
+            productData.Clear()
+            MySeriesCollection.Clear()
+            MyLabels.Clear()
+        Else
+            InitializeProductData()
 
-        MySeriesCollection = New LiveCharts.SeriesCollection From {
-                New LiveCharts.Wpf.ColumnSeries With {
-                    .Title = productID,
-                    .Values = New LiveCharts.ChartValues(Of DateTimePoint)(productData)
-                    }
-        }
+            MySeriesCollection.Add(New LiveCharts.Wpf.LineSeries With {
+                    .Title = "Marble",
+                    .Values = New LiveCharts.ChartValues(Of DateTimePoint)(productData),
+                    .LineSmoothness = 0
+                   })
 
 
+            '---Add a second columnseries(index 1) with nothing in it yet--- 
+            '---Define formatter to change double values on y-axis to string labels---
+            XFormatter = Function(value) New DateTime(CLng(value)).ToString("yyyy")
+            YFormatter = Function(value) value.ToString("N")
+            DataContext = Me
+        End If
 
-        '---Add a second columnseries(index 1) with nothing in it yet--- 
-        '---Define formatter to change double values on y-axis to string labels---
-        XFormatter = Function(value) New DateTime(CLng(value)).ToString("yyyy")
-        YFormatter = Function(value) value.ToString("N")
-        DataContext = Me
     End Sub
 
     Private Sub InitializeDataGrid()
@@ -50,6 +75,8 @@ Public Class ProductStats
         productSalesTable.ItemsSource = databasez.ExecuteReader()
 
     End Sub
+
+
 
     Private Sub InitializeProductData()
         For Each dr As DataRow In productDataTable.Rows

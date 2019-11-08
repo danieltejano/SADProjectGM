@@ -72,22 +72,22 @@
             </TextBlock>
 
             <WrapPanel Grid.Column="1" Grid.ColumnSpan="7" Height="334"  Grid.Row="3"  VerticalAlignment="center" HorizontalAlignment="Center" Width="647"  Background="#FFECE9E9" Margin="29,191,81,99" Grid.RowSpan="3" >
-                <DataGrid x:Name="GRDInv" Height="333" Width="646" Opacity="100" CanUserResizeColumns="False"/>
+                <DataGrid x:Name="GRDInv" Height="333" Width="646" Opacity="100"/>
             </WrapPanel>
 
             <StackPanel x:Name="STKBtn" HorizontalAlignment="Right" Height="55" Grid.Row="3" VerticalAlignment="Top" Width="159" Orientation="Horizontal" Margin="0,136,84,0" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="3" Grid.Column="5">
 
-                <Button x:Name="buttonAdd" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" ToolTip="Add" Width="35" Height="35" Margin="10,0,10,0" Background="#FF2E2E2D" BorderBrush="{x:Null}">
+                <Button x:Name="buttonAdd" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" ToolTip="MaterialDesignFloatingActionMiniAccentButton" Width="35" Height="35" Margin="10,0,10,0" Background="#FF2E2E2D" BorderBrush="{x:Null}">
                     <materialDesign:PackIcon Kind="AddCircleOutline" Height="25" Width="25" Foreground="#DDFFFFFF" />
                 </Button>
-                <Button x:Name="buttonEdit" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" ToolTip="Edit" Width="35" Height="35" Margin="10,0,10,0" Background="#FF2E2E2D" BorderBrush="{x:Null}">
+                <Button x:Name="buttonEdit" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" ToolTip="MaterialDesignFloatingActionMiniAccentButton" Width="35" Height="35" Margin="10,0,10,0" Background="#FF2E2E2D" BorderBrush="{x:Null}">
                     <materialDesign:PackIcon Kind="ModeEdit" Height="20" Width="20" Foreground="#DDFFFFFF" />
                 </Button>
-                <Button x:Name="buttonDelete" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" ToolTip="Delete" Width="35" Height="35" Margin="10,9.9" Background="#FF2E2E2D" BorderBrush="{x:Null}">
+                <Button x:Name="buttonDelete" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" ToolTip="MaterialDesignFloatingActionMiniAccentButton" Width="35" Height="35" Margin="10,9.9" Background="#FF2E2E2D" BorderBrush="{x:Null}">
                     <materialDesign:PackIcon Kind="DeleteCircle" Height="25" Width="25" Foreground="#DDFFFFFF" />
                 </Button>
             </StackPanel>
-            <Grid Grid.ColumnSpan="3" Margin="140,0,-283,122.8" Grid.RowSpan="5" Grid.Column="7" Grid.Row="3">
+            <Grid x:Name="GRDPropertyEditor" Grid.ColumnSpan="3" Margin="140,0,-283,122.8" Grid.RowSpan="5" Grid.Column="7" Grid.Row="3" Visibility="Hidden">
                 <TextBlock x:Name="LBLProductDetails" Text="Property Editor" FontSize="32" Foreground="#FF554F4F" RenderTransformOrigin="0.5,0.5" Margin="0,-6,0,-53.8" HorizontalAlignment="Left" Width="446" />
                 <StackPanel x:Name="stklbl" HorizontalAlignment="Left" Margin="10,37,0,49.2" Width="150">
                     <Label x:Name="lblid" Content="Product ID" FontSize="17" FontWeight="Bold" Margin="10,15,0,20"/>
@@ -116,16 +116,32 @@
                 <Button x:Name="buttonSave" Content="SAVE" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="179,511,0,-41.8"/>
                 <Button x:Name="buttonCancel" Content="CANCEL" VerticalAlignment="Top" Margin="324,511,0,-41.8" HorizontalAlignment="Left" Width="100"/>
             </Grid>
-            <Button x:Name="BTNAddStocks" Content="AddStocks" Grid.Column="3" HorizontalAlignment="Left" Margin="21,99,0,0" Grid.Row="3" VerticalAlignment="Top" Width="102" Grid.ColumnSpan="2"/>
+            <Button x:Name="BTNAddStocks" Content="AddStocks" Grid.Column="3" HorizontalAlignment="Left" Margin="22,99,0,0" Grid.Row="3" VerticalAlignment="Top" Width="102" Grid.ColumnSpan="2"/>
             <Button x:Name="btnplus" Content="+" Grid.Column="6" HorizontalAlignment="Left" Margin="5,99,0,0" Grid.Row="3" VerticalAlignment="Top" Width="42" Grid.ColumnSpan="2"/>
-            <Button x:Name="btnminus" Content="–" Grid.Column="5" Margin="0,99,69,0" Grid.Row="3" VerticalAlignment="Top" Height="32"/>
+            <Button x:Name="btnminus" Content="–" Grid.Column="5" Margin="10,99,59,0" Grid.Row="3" VerticalAlignment="Top" Height="32"/>
             <ComboBox x:Name="CMBCategory" HorizontalAlignment="Left" Margin="66,149,0,0" VerticalAlignment="Top" Width="120" Foreground="#FF474747" Grid.Column="4" Grid.Row="3" materialDesign:HintAssist.Hint="Categories" Height="28" Grid.ColumnSpan="2" />
             <TextBox x:Name="SearchTextBox" HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" VerticalAlignment="Top" Width="259" Margin="26,149,0,0" CaretBrush="#FF616161" Foreground="#FF686868" materialDesign:HintAssist.Hint="Search by Product" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="3"/>
             <Button x:Name="btnplus_10" Content="+10" Grid.Column="7" HorizontalAlignment="Left" Margin="11,99,0,0" Grid.Row="3" VerticalAlignment="Top" Width="59"/>
-            <Button x:Name="btnminus_10" Content="–10" Grid.Column="4" HorizontalAlignment="Left" Margin="87,99,0,0" Grid.Row="3" VerticalAlignment="Top" Width="58" Height="32"/>
-            <TextBlock x:Name="FLDadd" TextWrapping="Wrap" FontSize="24" Margin="56,99,7,64" TextAlignment="Center" Foreground="Black" Grid.Column="5" Grid.Row="3"/>
-            <local:ProductStats x:Name="stats" Grid.Row="2" Grid.Column="7" Grid.ColumnSpan="3" Margin="75,22,-239,84" Grid.RowSpan="4"  />
+            <Button x:Name="btnminus_10" Content="–10" Grid.Column="4" HorizontalAlignment="Left" Margin="93,99,0,0" Grid.Row="3" VerticalAlignment="Top" Width="58" Height="32"/>
+            <TextBlock x:Name="FLDadd" TextWrapping="Wrap" FontSize="24" Margin="60,99,0,64" TextAlignment="Center" Foreground="Black" Grid.Column="5" Grid.Row="3" Text="0"/>
+            <Grid x:Name="GRDNotes" Grid.Column="8" HorizontalAlignment="Left" Height="525" Grid.Row="3" VerticalAlignment="Top" Width="435" Grid.ColumnSpan="2" Margin="0,0,-283,0" Grid.RowSpan="3">
+                <ScrollViewer>
+                    <StackPanel>
+                        <TextBlock Text="Inventory Notes" Foreground="#FF554F4F" FontSize="22" Margin="10"/>
+                        <WrapPanel x:Name="RemindersContainer" Orientation="Horizontal">
+                            <WrapPanel.Resources>
+                                <Style TargetType="{x:Type local:ReminderItem}">
+                                    <Setter Property="Margin" Value="5,10,5,10"/>
+                                </Style>
+                            </WrapPanel.Resources>
+                        </WrapPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
 
+            <local:ProductStats x:Name="stats" Grid.Row="2" Grid.Column="7" Grid.ColumnSpan="3" Margin="75,22,-239,84" Grid.RowSpan="4" ScrollViewer.VerticalScrollBarVisibility="Hidden" Visibility="Hidden"  />
+            <Button x:Name="BtnSidePanelButton" Content="Property Editor" Grid.Column="9" HorizontalAlignment="Left" Margin="172,30,-283,0" VerticalAlignment="Top" Width="152" Grid.Row="1" Grid.RowSpan="2"/>
+            
         </Grid>
     </Grid>
 </Page>

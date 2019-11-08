@@ -20,8 +20,8 @@
                 <materialDesign:PackIcon Kind="Close"/>
             </Button>
         </StackPanel>
-        <StackPanel Height="210">
-            <lvc:CartesianChart x:Name="productChart" Series="{Binding MySeriesCollection}"  LegendLocation="Right" Height="250">
+        <StackPanel Height="250">
+            <lvc:CartesianChart x:Name="productChart" Series="{Binding MySeriesCollection}" Height="250" Margin="20,0">
                 <lvc:CartesianChart.AxisX>
                     <lvc:Axis Title="Year" LabelFormatter="{Binding XFormatter}"></lvc:Axis>
                 </lvc:CartesianChart.AxisX>
@@ -31,7 +31,7 @@
             </lvc:CartesianChart>
         </StackPanel>
         <StackPanel Margin="0,20,0,20" Height="auto">
-            <DataGrid x:Name="productSalesTable" Height="275"/>
+            <DataGrid x:Name="productSalesTable" Height="230" Margin="20,0"/>
         </StackPanel>
     </StackPanel>
 </UserControl>
