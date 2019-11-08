@@ -60,6 +60,33 @@ Class InventoryPage
         CMBCategory.Items.Add("Dining Set")
         CMBCategory.Items.Add("Dining Table")
         CMBCategory.Items.Add("Sala Set")
+        GetReminders()
+
+    End Sub
+
+    Private Sub GetReminders()
+        RemindersContainer.Children.Clear()
+        Dim oleDatabaseConnection As New OleDb.OleDbConnection(connectionString)
+        oleDatabaseConnection.Open()
+        Dim databasez As New OleDbCommand
+        databasez.CommandText = "SELECT * FROM Product WHERE (((Product.[UnitsAvailable])<=10)) order by UnitsAvailable ASC"
+        databasez.Connection = oleDatabaseConnection
+        Using databaseActualTable As OleDbDataReader = databasez.ExecuteReader()
+            While databaseActualTable.Read()
+                Dim a As New ReminderItem
+                If databaseActualTable.GetValue(5) = 0 Then
+                    a.NotificationHeader.Text = "Product Depleted"
+                    a.NotificationSubheader.Text = databaseActualTable.GetValue(1) & " has been depleted " & " please consider to restock within the week"
+                    RemindersContainer.Children.Add(a)
+                Else
+                    a.NotificationHeader.Text = "Product nearly Depleted"
+                    a.NotificationIcon.Foreground = New SolidColorBrush(ColorConverter.ConvertFromString("#FFEED42D"))
+                    a.NotificationSubheader.Text = databaseActualTable.GetValue(1) & " is nearly depleted " & " with " & databaseActualTable.GetValue(5) & " stocks available please consider to restock within the week"
+                    RemindersContainer.Children.Add(a)
+                End If
+
+            End While
+        End Using
     End Sub
 
     Private Sub GRDInv_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles GRDInv.SelectionChanged
@@ -175,7 +202,8 @@ Class InventoryPage
             BTNAddStocks.Content = "AddStocks"
             A.Close()
             Restrictions()
-            RecordLog(accountID:=AccountId, loa:=UserType, actionTaken:="AddedStocks")
+            RecordLog(accountID:=AccountId, loa:=UserType, actionTaken:="Added Stocks")
+
         End If
         PullDataFromDatabase(d:=GRDInv, tableName:="formula ORDER BY Category DESC")
         GRDInv.Columns(7).Visibility = Visibility.Hidden
@@ -220,6 +248,7 @@ Class InventoryPage
             btnplus_10.IsEnabled = True
         End If
     End Sub
+
     Private Sub btnplus_Click(sender As Object, e As RoutedEventArgs) Handles btnplus.Click
         FLDadd.Text = FLDadd.Text + 1
         If FLDadd.Text <= 0 Then
@@ -239,6 +268,7 @@ Class InventoryPage
             btnplus_10.IsEnabled = True
         End If
     End Sub
+
     Private Sub btnminus_Click(sender As Object, e As RoutedEventArgs) Handles btnminus.Click
         FLDadd.Text = FLDadd.Text - 1
         If FLDadd.Text <= 0 Then
@@ -258,6 +288,7 @@ Class InventoryPage
             btnplus_10.IsEnabled = True
         End If
     End Sub
+
     Private Sub buttonSave_Click(sender As Object, e As RoutedEventArgs) Handles buttonSave.Click
         If buttonSave.Content = "SAVE" Then
             GRDInv.IsHitTestVisible = True
@@ -531,6 +562,7 @@ Class InventoryPage
     End Sub
 
 #End Region
+
     Private Sub GRDInv_MouseDoubleClick(sender As Object, e As MouseButtonEventArgs) Handles GRDInv.MouseDoubleClick
         Dim selectedRowIndex = GRDInv.SelectedIndex
         stats.Visibility = Visibility.Visible
@@ -538,4 +570,17 @@ Class InventoryPage
         stats.ReloadStats(prodID)
 
     End Sub
+
+    Private Sub BtnSidePanelButton_Click(sender As Object, e As RoutedEventArgs) Handles BtnSidePanelButton.Click
+        If BtnSidePanelButton.Content = "Property Editor" Then
+            BtnSidePanelButton.Content = "View Notes"
+            GRDNotes.Visibility = Visibility.Hidden
+            GRDPropertyEditor.Visibility = Visibility.Visible
+        ElseIf BtnSidePanelButton.Content = "View Notes" Then
+            BtnSidePanelButton.Content = "Property Editor"
+            GRDPropertyEditor.Visibility = Visibility.Hidden
+            GRDNotes.Visibility = Visibility.Visible
+        End If
+    End Sub
+
 End Class
