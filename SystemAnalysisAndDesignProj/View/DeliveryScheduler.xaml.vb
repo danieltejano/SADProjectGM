@@ -43,10 +43,11 @@ Class DeliveryScheduler
         CBDs.Items.Add("DELIVERED")
         STKBtn.IsEnabled = True
         CMBCategory.Items.Clear()
-        CMBCategory.Items.Add("")
+        CMBCategory.Items.Add("ALL")
         CMBCategory.Items.Add("CANCELLED")
         CMBCategory.Items.Add("DELIVERED")
         CMBCategory.Items.Add("PENDING")
+        CMBCategory.SelectedIndex = 0
     End Sub
 
     Private Sub GRDDel_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles GRDDel.SelectionChanged
@@ -147,20 +148,41 @@ Class DeliveryScheduler
     End Sub
 
     Private Sub SearchTextBox_TextChanged(sender As Object, e As TextChangedEventArgs) Handles SearchTextBox.TextChanged
-        CMBCategory.SelectedIndex = 0
         Dim oleDatabaseConnection As New OleDb.OleDbConnection(connectionString)
         oleDatabaseConnection.Open()
         Dim databasez As New OleDbCommand
-        databasez.CommandText = "Select *  From Delivery_Job Where CustomerName Like '%" & SearchTextBox.Text & "%'"
-        databasez.Connection = oleDatabaseConnection
-        Dim databaseActualTable As OleDbDataReader = databasez.ExecuteReader()
-        GRDDel.ItemsSource = databaseActualTable
-        GRDDel.Items.Refresh()
+
+        If CMBCategory.SelectedIndex = 0 Then
+            databasez.CommandText = "Select *  From Delivery_Job Where CustomerName Like '%" & SearchTextBox.Text & "%'"
+            databasez.Connection = oleDatabaseConnection
+            Dim databaseActualTable As OleDbDataReader = databasez.ExecuteReader()
+            GRDDel.ItemsSource = databaseActualTable
+            GRDDel.Items.Refresh()
+        ElseIf CMBCategory.SelectedIndex = 1 Then
+            databasez.CommandText = "Select *  From Delivery_Job Where DeliveryStatus='CANCELLED' and CustomerName Like '%" & SearchTextBox.Text & "%'"
+            databasez.Connection = oleDatabaseConnection
+            Dim databaseActualTable As OleDbDataReader = databasez.ExecuteReader()
+            GRDDel.ItemsSource = databaseActualTable
+            GRDDel.Items.Refresh()
+        ElseIf CMBCategory.SelectedIndex = 2 Then
+            databasez.CommandText = "Select *  From Delivery_Job Where DeliveryStatus='DELIVERED' and CustomerName Like '%" & SearchTextBox.Text & "%'"
+            databasez.Connection = oleDatabaseConnection
+            Dim databaseActualTable As OleDbDataReader = databasez.ExecuteReader()
+            GRDDel.ItemsSource = databaseActualTable
+            GRDDel.Items.Refresh()
+        ElseIf CMBCategory.SelectedIndex = 3 Then
+            databasez.CommandText = "Select *  From Delivery_Job Where DeliveryStatus='PENDING' and CustomerName Like '%" & SearchTextBox.Text & "%'"
+            databasez.Connection = oleDatabaseConnection
+            Dim databaseActualTable As OleDbDataReader = databasez.ExecuteReader()
+            GRDDel.ItemsSource = databaseActualTable
+            GRDDel.Items.Refresh()
+        End If
     End Sub
 
 
 
     Private Sub CMBCategory_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles CMBCategory.SelectionChanged
+        SearchTextBox.Clear()
         Dim oleDatabaseConnection As New OleDb.OleDbConnection(connectionString)
         oleDatabaseConnection.Open()
         Dim databasez As New OleDbCommand

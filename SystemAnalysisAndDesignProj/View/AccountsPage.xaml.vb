@@ -42,9 +42,10 @@ Class AccountsPage
         Restrictions()
         STKBtn.IsEnabled = True
         CMBCategory.Items.Clear()
-        CMBCategory.Items.Add("")
+        CMBCategory.Items.Add("All")
         CMBCategory.Items.Add("Administrator")
         CMBCategory.Items.Add("Cashier")
+        CMBCategory.SelectedIndex = 0
         mm.CheckStocks()
     End Sub
 
@@ -246,20 +247,35 @@ Class AccountsPage
     End Sub
 
     Private Sub SearchTextBox_TextChanged(sender As Object, e As TextChangedEventArgs) Handles SearchTextBox.TextChanged
-        CMBCategory.SelectedIndex = 0
         Dim oleDatabaseConnection As New OleDb.OleDbConnection(connectionString)
         oleDatabaseConnection.Open()
         Dim databasez As New OleDbCommand
-        databasez.CommandText = "Select *  From tblUsers Where UserName Like '%" & SearchTextBox.Text & "%'"
-        databasez.Connection = oleDatabaseConnection
-        Dim databaseActualTable As OleDbDataReader = databasez.ExecuteReader()
-        GRDAccounts.ItemsSource = databaseActualTable
-        GRDAccounts.Items.Refresh()
+
+        If CMBCategory.SelectedIndex = 0 Then
+            databasez.CommandText = "Select *  From tblUsers Where UserName Like '%" & SearchTextBox.Text & "%'"
+            databasez.Connection = oleDatabaseConnection
+            Dim databaseActualTable As OleDbDataReader = databasez.ExecuteReader()
+            GRDAccounts.ItemsSource = databaseActualTable
+            GRDAccounts.Items.Refresh()
+        ElseIf CMBCategory.SelectedIndex = 1 Then
+            databasez.CommandText = "Select *  From tblUsers Where LevelofAccess='Administrator' and UserName Like '%" & SearchTextBox.Text & "%'"
+            databasez.Connection = oleDatabaseConnection
+            Dim databaseActualTable As OleDbDataReader = databasez.ExecuteReader()
+            GRDAccounts.ItemsSource = databaseActualTable
+            GRDAccounts.Items.Refresh()
+        ElseIf CMBCategory.SelectedIndex = 2 Then
+            databasez.CommandText = "Select *  From tblUsers Where LevelofAccess='Cashier' and UserName Like '%" & SearchTextBox.Text & "%'"
+            databasez.Connection = oleDatabaseConnection
+            Dim databaseActualTable As OleDbDataReader = databasez.ExecuteReader()
+            GRDAccounts.ItemsSource = databaseActualTable
+            GRDAccounts.Items.Refresh()
+        End If
     End Sub
 
 
 
     Private Sub CMBCategory_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles CMBCategory.SelectionChanged
+        SearchTextBox.Clear()
         Dim oleDatabaseConnection As New OleDb.OleDbConnection(connectionString)
         oleDatabaseConnection.Open()
         Dim databasez As New OleDbCommand

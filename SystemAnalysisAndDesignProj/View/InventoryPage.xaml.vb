@@ -60,6 +60,7 @@ Class InventoryPage
         CMBCategory.Items.Add("Dining Set")
         CMBCategory.Items.Add("Dining Table")
         CMBCategory.Items.Add("Sala Set")
+        CMBCategory.SelectedIndex = 0
     End Sub
 
     Private Sub GRDInv_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles GRDInv.SelectionChanged
@@ -467,20 +468,57 @@ Class InventoryPage
     End Sub
 
     Private Sub SearchTextBox_TextChanged(sender As Object, e As TextChangedEventArgs) Handles SearchTextBox.TextChanged
-        CMBCategory.SelectedIndex = 0
         Dim oleDatabaseConnection As New OleDb.OleDbConnection(connectionString)
         oleDatabaseConnection.Open()
         Dim databasez As New OleDbCommand
-        databasez.CommandText = "Select *  From Product Where ProductName Like '%" & SearchTextBox.Text & "%'"
-        databasez.Connection = oleDatabaseConnection
-        Dim databaseActualTable As OleDbDataReader = databasez.ExecuteReader()
-        GRDInv.ItemsSource = databaseActualTable
-        GRDInv.Items.Refresh()
+
+        If CMBCategory.SelectedIndex = 0 Then
+            databasez.CommandText = "Select *  From Product Where ProductName Like '%" & SearchTextBox.Text & "%'"
+            databasez.Connection = oleDatabaseConnection
+            Dim databaseActualTable As OleDbDataReader = databasez.ExecuteReader()
+            GRDInv.ItemsSource = databaseActualTable
+            GRDInv.Items.Refresh()
+        ElseIf CMBCategory.SelectedIndex = 1 Then
+            databasez.CommandText = "Select *  From Product Where Category='Bed' and ProductName Like '%" & SearchTextBox.Text & "%'"
+            databasez.Connection = oleDatabaseConnection
+            Dim databaseActualTable As OleDbDataReader = databasez.ExecuteReader()
+            GRDInv.ItemsSource = databaseActualTable
+            GRDInv.Items.Refresh()
+        ElseIf CMBCategory.SelectedIndex = 2 Then
+            databasez.CommandText = "Select *  From Product Where Category='Cabinet' and ProductName Like '%" & SearchTextBox.Text & "%'"
+            databasez.Connection = oleDatabaseConnection
+            Dim databaseActualTable As OleDbDataReader = databasez.ExecuteReader()
+            GRDInv.ItemsSource = databaseActualTable
+            GRDInv.Items.Refresh()
+        ElseIf CMBCategory.SelectedIndex = 3 Then
+            databasez.CommandText = "Select *  From Product Where Category='Dining Chair' and ProductName Like '%" & SearchTextBox.Text & "%'"
+            databasez.Connection = oleDatabaseConnection
+            Dim databaseActualTable As OleDbDataReader = databasez.ExecuteReader()
+            GRDInv.ItemsSource = databaseActualTable
+            GRDInv.Items.Refresh()
+        ElseIf CMBCategory.SelectedIndex = 4 Then
+            databasez.CommandText = "Select *  From Product Where Category='Dining Set' and ProductName Like '%" & SearchTextBox.Text & "%'"
+            databasez.Connection = oleDatabaseConnection
+            Dim databaseActualTable As OleDbDataReader = databasez.ExecuteReader()
+            GRDInv.ItemsSource = databaseActualTable
+            GRDInv.Items.Refresh()
+        ElseIf CMBCategory.SelectedIndex = 5 Then
+            databasez.CommandText = "Select *  From Product Where Category='Dining Table' and ProductName Like '%" & SearchTextBox.Text & "%'"
+            databasez.Connection = oleDatabaseConnection
+            Dim databaseActualTable As OleDbDataReader = databasez.ExecuteReader()
+            GRDInv.ItemsSource = databaseActualTable
+            GRDInv.Items.Refresh()
+        ElseIf CMBCategory.SelectedIndex = 6 Then
+            databasez.CommandText = "Select *  From Product Where Category='Sala Set' and ProductName Like '%" & SearchTextBox.Text & "%'"
+            databasez.Connection = oleDatabaseConnection
+            Dim databaseActualTable As OleDbDataReader = databasez.ExecuteReader()
+            GRDInv.ItemsSource = databaseActualTable
+            GRDInv.Items.Refresh()
+        End If
     End Sub
 
-
-
     Private Sub CMBCategory_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles CMBCategory.SelectionChanged
+        SearchTextBox.Clear()
         Dim oleDatabaseConnection As New OleDb.OleDbConnection(connectionString)
         oleDatabaseConnection.Open()
         Dim databasez As New OleDbCommand
@@ -527,7 +565,6 @@ Class InventoryPage
             GRDInv.ItemsSource = databaseActualTable
             GRDInv.Items.Refresh()
         End If
-
     End Sub
 
 #End Region
