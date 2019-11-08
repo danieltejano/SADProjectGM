@@ -225,7 +225,7 @@ Public Class SupplierPage
             GRDDMan.ItemsSource = databaseActualTable
             GRDDMan.Items.Refresh()
         ElseIf CMBCategory.SelectedIndex = 1 Then
-            databasez.CommandText = "Select *  From Supplier Where Owner Like '" & SearchTextBox.Text & "%'"
+            databasez.CommandText = "Select *  From Supplier Where Owner Like '%" & SearchTextBox.Text & "%'"
             databasez.Connection = oleDatabaseConnection
             Dim databaseActualTable As OleDbDataReader = databasez.ExecuteReader()
             GRDDMan.ItemsSource = databaseActualTable

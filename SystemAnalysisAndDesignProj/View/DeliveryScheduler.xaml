@@ -44,7 +44,7 @@
             <TextBlock x:Name="LBLSearch" Text="Schedule" Grid.Column="1" Grid.Row="4" Grid.RowSpan="2"  VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="24" Foreground="#FF554F4F" Margin="24.5,13.4,0,41.8" />
             <TextBlock x:Name="LBLProductDetails" Text="Property Editor" Grid.Column="7" Grid.ColumnSpan="2" Grid.Row="3" FontSize="32" Foreground="#FF554F4F" />
             <WrapPanel Grid.Column="1" Grid.ColumnSpan="5" Height="334"  Grid.Row="7"  VerticalAlignment="center" HorizontalAlignment="Center" Width="510" Margin="24.5,31,25.5,56" Background="#FFECE9E9" >
-                <DataGrid x:Name="GRDDel" Height="333" Width="508"/>
+                <DataGrid x:Name="GRDDel" Height="333" Width="508" CanUserResizeColumns="False"/>
                            </WrapPanel>
             <Rectangle Grid.Column="7" Grid.ColumnSpan="3" Grid.Row="5" Grid.RowSpan="3" Height="430" Width="414"  HorizontalAlignment="Left" Margin="0,1.4,-114,68.4" Fill="#FFECE9E9" />
             <StackPanel x:Name="STKBtn" Grid.Column="5" HorizontalAlignment="Right" Height="55" Grid.Row="5" Grid.RowSpan="3" VerticalAlignment="Top" Width="52" Orientation="Horizontal" Margin="0,42,28,0">
